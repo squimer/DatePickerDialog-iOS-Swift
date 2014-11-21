@@ -12,6 +12,8 @@ class ViewController: UIViewController, DatePickerDialogDelegate {
     
     var datePickerDialog: DatePickerDialog!
     
+    @IBOutlet weak var textField: UITextField!
+    
     /* Overrides */
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -22,13 +24,15 @@ class ViewController: UIViewController, DatePickerDialogDelegate {
     }
     
     /* DatePickerDialogDelegate */
-    func datePickerDialog(didSelect date: NSDate) {
-        println(date)
+    func datePickerDialog(didSelect date: NSDate, from tag: String) {
+        if tag == "myTextFieldTag" {
+            textField.text = "\(date)"
+        }
     }
     
     /* IBActions */
     @IBAction func datePickerTapped(sender: AnyObject) {
-        self.datePickerDialog.togglePicker()
+        self.datePickerDialog.showPickerWithTag("myTextFieldTag")
     }
     
 }

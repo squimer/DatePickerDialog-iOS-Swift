@@ -9,7 +9,7 @@
         <!--Simple Date Picker-->
         <scene sceneID="ufC-wZ-h7g">
             <objects>
-                <viewController id="vXZ-lx-hvc" customClass="ViewController" customModule="PickerDialog" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="vXZ-lx-hvc" customClass="ViewController" customModule="DatePickerDialogExample" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="jyV-Pf-zRb"/>
                         <viewControllerLayoutGuide type="bottom" id="2fi-mo-0CV"/>
@@ -27,15 +27,26 @@
                                     <action selector="datePickerTapped:" destination="vXZ-lx-hvc" eventType="touchUpInside" id="wms-AS-rYa"/>
                                 </connections>
                             </button>
+                            <textField opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="Selected Date" borderStyle="roundedRect" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Mdv-T3-c0a" userLabel="TextField">
+                                <rect key="frame" x="16" y="215" width="568" height="30"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                         <constraints>
+                            <constraint firstItem="Hp5-Qv-xJn" firstAttribute="top" secondItem="Mdv-T3-c0a" secondAttribute="bottom" constant="8" id="7Pg-vD-8DI"/>
+                            <constraint firstItem="Mdv-T3-c0a" firstAttribute="trailing" secondItem="Hp5-Qv-xJn" secondAttribute="trailing" id="RKJ-rq-8YJ"/>
+                            <constraint firstItem="Mdv-T3-c0a" firstAttribute="leading" secondItem="Hp5-Qv-xJn" secondAttribute="leading" id="Zoq-HK-OTf"/>
                             <constraint firstItem="Hp5-Qv-xJn" firstAttribute="leading" secondItem="kh9-bI-dsS" secondAttribute="leadingMargin" id="ceb-rD-HfR"/>
                             <constraint firstItem="Hp5-Qv-xJn" firstAttribute="trailing" secondItem="kh9-bI-dsS" secondAttribute="trailingMargin" id="i2T-Af-NS1"/>
                             <constraint firstAttribute="centerY" secondItem="Hp5-Qv-xJn" secondAttribute="centerY" id="vBm-dR-CiA"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="Simple Date Picker" id="DQ1-xC-CYc"/>
+                    <connections>
+                        <outlet property="textField" destination="Mdv-T3-c0a" id="pLc-lN-bEc"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="x5A-6p-PRh" sceneMemberID="firstResponder"/>
             </objects>

@@ -11,7 +11,7 @@ import QuartzCore
 
 protocol DatePickerDialogDelegate {
     
-    func datePickerDialog(didSelect date: NSDate)
+    func datePickerDialog(didSelect date: NSDate, from tag: String)
     
 }
 
@@ -26,6 +26,7 @@ class DatePickerDialog: UIView {
     @IBOutlet weak var datePicker: UIDatePicker!
     
     /* Local vars */
+    var datePickerTag: String = ""
     var delegate: DatePickerDialogDelegate?
     
     /* Overrides */
@@ -44,13 +45,13 @@ class DatePickerDialog: UIView {
     
     /* IBActions */
     @IBAction func cancelTapped(sender: AnyObject) {
-        togglePicker()
+        hidePicker()
     }
     
     @IBAction func selectTapped(sender: AnyObject) {
-        togglePicker()
+        hidePicker()
         if self.delegate != nil {
-            self.delegate!.datePickerDialog(didSelect: self.datePicker.date)
+            self.delegate!.datePickerDialog(didSelect: self.datePicker.date, from: self.datePickerTag)
         }
     }
     
@@ -86,7 +87,8 @@ class DatePickerDialog: UIView {
         self.addSubview(pickerView)
     }
     
-    private func showPicker() {
+    func showPickerWithTag(tag: String) {
+        self.datePickerTag = tag
         self.hidden = false
         self.alpha = 0.0
         UIView.animateWithDuration(self.animationDuration, animations: {
@@ -94,19 +96,11 @@ class DatePickerDialog: UIView {
         }, completion: nil)
     }
     
-    private func hidePicker() {
+    func hidePicker() {
         UIView.animateWithDuration(self.animationDuration, animations: { () -> Void in
             self.alpha = 0.0
         }) { (value: Bool) -> Void in
             self.hidden = true
-        }
-    }
-    
-    func togglePicker() {
-        if self.hidden {
-            showPicker()
-        } else {
-            hidePicker()
         }
     }
     
