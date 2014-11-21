@@ -2,6 +2,8 @@
 
 DatePickerDialog is an iOS drop-in class that displays a dialog with a UIDatePicker.
 
+[![](http://github.com/squimer/DatePickerDialog-iOS-Swift/blob/master/images/screen1.png)](http://github.com/squimer/DatePickerDialog-iOS-Swift/blob/master/images/screen1.png)
+
 ## Requirements
 
 DatePickerDialog works on iOS 7 and 8. It depends on the following Apple frameworks, which should already be included with most Xcode templates:
