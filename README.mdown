@@ -1,0 +1,46 @@
+# DatePickerDialog - iOS - Swift
+
+DatePickerDialog is an iOS drop-in class that displays a dialog with a UIDatePicker.
+
+## Requirements
+
+DatePickerDialog works on iOS 7 and 8. It depends on the following Apple frameworks, which should already be included with most Xcode templates:
+
+* Foundation
+* UIKit
+* QuartzCore
+
+## Adding DatePickerDialog to your project
+
+You can directly add the `DatePickerDialog.swift` and `DatePickerDialog.xib` source files to your project.
+
+1. Download the [latest code version](https://github.com/squimer/DatePickerDialog-iOS-Swift/archive/master.zip) or add the repository as a git submodule to your git-tracked project. 
+2. Open your project in Xcode, then drag and drop `DatePickerDialog.swift` and `DatePickerDialog.xib` onto your project (use the "Product Navigator view"). Make sure to select Copy items when asked if you extracted the code archive outside of your project. 
+
+## Example
+
+```swift
+class ViewController: UIViewController, DatePickerDialogDelegate {
+    var datePickerDialog: DatePickerDialog!
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        
+        self.datePickerDialog = DatePickerDialog(frame: self.view.frame)
+        self.datePickerDialog.delegate = self
+        self.view.addSubview(datePickerDialog)
+    }
+    
+    func datePickerDialog(didSelect date: NSDate) {
+        println(date)
+    }
+    
+    @IBAction func datePickerTapped(sender: AnyObject) {
+        self.datePickerDialog.togglePicker()
+    }
+}
+```
+
+## License
+
+This code is distributed under the terms and conditions of the [MIT license](LICENSE). 
