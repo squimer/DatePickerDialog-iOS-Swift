@@ -23,6 +23,7 @@ class DatePickerDialog: UIView {
     let cornerRadius:      CGFloat        = 8.0
     
     /* IBOutlets */
+    @IBOutlet weak var titleLabel: UILabel!
     @IBOutlet weak var datePicker: UIDatePicker!
     
     /* Local vars */
@@ -87,7 +88,8 @@ class DatePickerDialog: UIView {
         self.addSubview(pickerView)
     }
     
-    func showPickerWithTag(tag: String) {
+    func showPickerWithTag(tag: String, title: String) {
+        self.titleLabel.text = title
         self.datePickerTag = tag
         self.hidden = false
         self.alpha = 0.0
