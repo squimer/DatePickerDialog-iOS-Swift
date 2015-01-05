@@ -24,19 +24,19 @@ You can directly add the `DatePickerDialog.swift` file to your project.
 ```swift
 class ViewController: UIViewController {
 
-@IBOutlet weak var textField: UITextField!
+	@IBOutlet weak var textField: UITextField!
 
-override func viewDidLoad() {
-super.viewDidLoad()
-}
+	override func viewDidLoad() {
+		super.viewDidLoad()
+	}
 
-/* IBActions */
-@IBAction func datePickerTapped(sender: AnyObject) {
-DatePickerDialog().show(title: "DatePicker", doneButtonTitle: "Done", cancelButtonTitle: "Cancel", datePickerMode: .Date) {
-(date) -> Void in
-self.textField.text = "\(date)"
-}
-}
+	/* IBActions */
+	@IBAction func datePickerTapped(sender: AnyObject) {
+		DatePickerDialog().show(title: "DatePicker", doneButtonTitle: "Done", cancelButtonTitle: "Cancel", datePickerMode: .Date) {
+			(date) -> Void in
+			self.textField.text = "\(date)"
+		}
+	}
 
 }
 ```
