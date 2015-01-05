@@ -1,6 +1,6 @@
 # DatePickerDialog - iOS - Swift
 
-DatePickerDialog is an iOS drop-in class that displays a dialog with an UIDatePicker.
+DatePickerDialog is an iOS drop-in classe that displays an UIDatePicker within an UIAlertView.
 
 [![](https://raw.githubusercontent.com/squimer/DatePickerDialog-iOS-Swift/master/images/screen1.png)](https://github.com/squimer/DatePickerDialog-iOS-Swift/tree/master/images)
 
@@ -14,38 +14,49 @@ DatePickerDialog works on iOS 7 and 8. It depends on the following Apple framewo
 
 ## Adding DatePickerDialog to your project
 
-You can directly add the `DatePickerDialog.swift` and `DatePickerDialog.xib` source files to your project.
+You can directly add the `DatePickerDialog.swift` file to your project.
 
 1. Download the [latest code version](https://github.com/squimer/DatePickerDialog-iOS-Swift/archive/master.zip) or add the repository as a git submodule to your git-tracked project. 
-2. Open your project in Xcode, then drag and drop `DatePickerDialog.swift` and `DatePickerDialog.xib` onto your project (use the "Product Navigator view"). Make sure to select Copy items when asked if you extracted the code archive outside of your project. 
+2. Open your project in Xcode, then drag and drop `DatePickerDialog.swift` onto your project (use the "Product Navigator view"). Make sure to select Copy items when asked if you extracted the code archive outside of your project. 
 
 ## Example
 
 ```swift
-class ViewController: UIViewController, DatePickerDialogDelegate {
-    var datePickerDialog: DatePickerDialog!
-    
-    @IBOutlet weak var textField: UITextField!
-	
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        
-        self.datePickerDialog = DatePickerDialog(frame: self.view.frame)
-        self.datePickerDialog.delegate = self
-        self.view.addSubview(datePickerDialog)
-    }
-    
-    func datePickerDialog(didSelect date: NSDate, from tag: String) {
-        if tag == "myTextFieldTag" {
-            textField.text = "\(date)"
-        }
-    }
-    
-    @IBAction func datePickerTapped(sender: AnyObject) {
-        self.datePickerDialog.showPickerWithTag("myTextFieldTag")
-    }
+class ViewController: UIViewController {
+
+@IBOutlet weak var textField: UITextField!
+
+override func viewDidLoad() {
+super.viewDidLoad()
+}
+
+/* IBActions */
+@IBAction func datePickerTapped(sender: AnyObject) {
+DatePickerDialog().show(title: "DatePicker", doneButtonTitle: "Done", cancelButtonTitle: "Cancel", datePickerMode: .Date) {
+(date) -> Void in
+self.textField.text = "\(date)"
+}
+}
+
 }
 ```
+
+## Show parameters
+
+- title: String **(Required)**
+- doneButtonTitle: String
+- cancelButtonTitle: String
+- defaultDate: NSDate
+- datePickerMode: UIDatePickerMode **(Required)**
+- callback: ((date: NSDate) -> Void) **(Required)**
+
+## Todo
+
+- Handle device orientation changes.
+
+## Special thanks to
+
+* [@wimagguc](https://github.com/wimagguc) for the work with [ios-custom-alertview](https://github.com/wimagguc/ios-custom-alertview) library.
 
 ## License
 

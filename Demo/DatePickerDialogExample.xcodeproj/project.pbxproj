@@ -12,7 +12,6 @@
 		81EC6C871A1EADF7009440DB /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 81EC6C851A1EADF7009440DB /* Main.storyboard */; };
 		81EC6C891A1EADF7009440DB /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 81EC6C881A1EADF7009440DB /* Images.xcassets */; };
 		81EC6CA81A1EB147009440DB /* DatePickerDialog.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81EC6CA71A1EB147009440DB /* DatePickerDialog.swift */; };
-		81EC6CAA1A1EB154009440DB /* DatePickerDialog.xib in Resources */ = {isa = PBXBuildFile; fileRef = 81EC6CA91A1EB154009440DB /* DatePickerDialog.xib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -23,7 +22,6 @@
 		81EC6C861A1EADF7009440DB /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		81EC6C881A1EADF7009440DB /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		81EC6CA71A1EB147009440DB /* DatePickerDialog.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DatePickerDialog.swift; sourceTree = "<group>"; };
-		81EC6CA91A1EB154009440DB /* DatePickerDialog.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = DatePickerDialog.xib; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -87,7 +85,6 @@
 			isa = PBXGroup;
 			children = (
 				81EC6CA71A1EB147009440DB /* DatePickerDialog.swift */,
-				81EC6CA91A1EB154009440DB /* DatePickerDialog.xib */,
 			);
 			name = DatePickerDialog;
 			sourceTree = "<group>";
@@ -151,7 +148,6 @@
 			files = (
 				81EC6C871A1EADF7009440DB /* Main.storyboard in Resources */,
 				81EC6C891A1EADF7009440DB /* Images.xcassets in Resources */,
-				81EC6CAA1A1EB154009440DB /* DatePickerDialog.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
