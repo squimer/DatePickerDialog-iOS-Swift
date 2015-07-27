@@ -11,7 +11,7 @@ class ViewController: UIViewController {
     
     /* IBActions */
     @IBAction func datePickerTapped(sender: AnyObject) {
-        DatePickerDialog().show(title: "DatePickerDialog", doneButtonTitle: "Done", cancelButtonTitle: "Cancel", datePickerMode: .Date) {
+        DatePickerDialog().show("DatePickerDialog", doneButtonTitle: "Done", cancelButtonTitle: "Cancel", datePickerMode: .Date) {
             (date) -> Void in
             self.textField.text = "\(date)"
         }
