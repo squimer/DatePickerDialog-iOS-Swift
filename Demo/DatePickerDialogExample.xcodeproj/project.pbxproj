@@ -65,7 +65,6 @@
 			children = (
 				81EC6C831A1EADF7009440DB /* ViewController.swift */,
 				81EC6C851A1EADF7009440DB /* Main.storyboard */,
-				81EC6CA61A1EB12B009440DB /* DatePickerDialog */,
 				81EC6CA11A1EAE0D009440DB /* App */,
 			);
 			name = DatePickerDialog;
@@ -88,13 +87,6 @@
 				81EC6C811A1EADF7009440DB /* AppDelegate.swift */,
 			);
 			name = App;
-			sourceTree = "<group>";
-		};
-		81EC6CA61A1EB12B009440DB /* DatePickerDialog */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			name = DatePickerDialog;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
