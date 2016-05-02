@@ -1,10 +1,9 @@
 import Foundation
 import UIKit
-import QuartzCore
 
-class DatePickerDialog: UIView {
+public class DatePickerDialog: UIView {
     
-    typealias DatePickerCallback = (date: NSDate) -> Void
+    public typealias DatePickerCallback = (date: NSDate) -> Void
     
     /* Consts */
     private let kDatePickerDialogDefaultButtonHeight:       CGFloat = 50
@@ -26,13 +25,13 @@ class DatePickerDialog: UIView {
     
     
     /* Overrides */
-    init() {
+    public init() {
         super.init(frame: CGRectMake(0, 0, UIScreen.mainScreen().bounds.size.width, UIScreen.mainScreen().bounds.size.height))
         
         setupView()
     }
     
-    required init(coder aDecoder: NSCoder) {
+    required public init(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
     
@@ -59,7 +58,7 @@ class DatePickerDialog: UIView {
     }
     
     /* Create the dialog view, and animate opening the dialog */
-    func show(title: String, doneButtonTitle: String = "Done", cancelButtonTitle: String = "Cancel", defaultDate: NSDate = NSDate(), datePickerMode: UIDatePickerMode = .DateAndTime, callback: DatePickerCallback) {
+    public func show(title: String, doneButtonTitle: String = "Done", cancelButtonTitle: String = "Cancel", defaultDate: NSDate = NSDate(), datePickerMode: UIDatePickerMode = .DateAndTime, callback: DatePickerCallback) {
         self.titleLabel.text = title
         self.doneButton.setTitle(doneButtonTitle, forState: .Normal)
         self.cancelButton.setTitle(cancelButtonTitle, forState: .Normal)
