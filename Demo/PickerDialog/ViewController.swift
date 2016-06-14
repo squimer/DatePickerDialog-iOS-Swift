@@ -11,10 +11,16 @@ class ViewController: UIViewController {
     
     /* IBActions */
     @IBAction func datePickerTapped(sender: AnyObject) {
-        DatePickerDialog().show("DatePickerDialog", doneButtonTitle: "Done", cancelButtonTitle: "Cancel", datePickerMode: .Date) {
+        let currentDate = NSDate()
+        let dateComponents = NSDateComponents()
+        dateComponents.month = -3
+        let threeMonthAgo = NSCalendar.currentCalendar().dateByAddingComponents(dateComponents, toDate: currentDate, options: NSCalendarOptions(rawValue: 0))
+        
+        DatePickerDialog().show("DatePickerDialog", doneButtonTitle: "Done", cancelButtonTitle: "Cancel", minimumDate: threeMonthAgo, maximumDate: currentDate, datePickerMode: .Date) {
             (date) -> Void in
             self.textField.text = "\(date)"
         }
+        
     }
     
 }
