@@ -33,3 +33,6 @@ xcuserdata
 # Carthage/Checkouts
 
 Carthage/Build
+
+# Mac
+.DS_Store
