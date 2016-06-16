@@ -1,10 +1,9 @@
 import Foundation
 import UIKit
-import QuartzCore
 
-class DatePickerDialog: UIView {
+public class DatePickerDialog: UIView {
     
-    typealias DatePickerCallback = (date: NSDate) -> Void
+    public typealias DatePickerCallback = (date: NSDate) -> Void
     
     /* Consts */
     private let kDatePickerDialogDefaultButtonHeight:       CGFloat = 50
@@ -26,13 +25,13 @@ class DatePickerDialog: UIView {
     
     
     /* Overrides */
-    init() {
+    public init() {
         super.init(frame: CGRectMake(0, 0, UIScreen.mainScreen().bounds.size.width, UIScreen.mainScreen().bounds.size.height))
         
         setupView()
     }
     
-    required init(coder aDecoder: NSCoder) {
+    required public init(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
     
@@ -59,7 +58,7 @@ class DatePickerDialog: UIView {
     }
     
     /* Create the dialog view, and animate opening the dialog */
-    func show(title: String, doneButtonTitle: String = "Done", cancelButtonTitle: String = "Cancel", defaultDate: NSDate = NSDate(), datePickerMode: UIDatePickerMode = .DateAndTime, callback: DatePickerCallback) {
+    public func show(title: String, doneButtonTitle: String = "Done", cancelButtonTitle: String = "Cancel", defaultDate: NSDate = NSDate(), datePickerMode: UIDatePickerMode = .DateAndTime, callback: DatePickerCallback) {
         self.titleLabel.text = title
         self.doneButton.setTitle(doneButtonTitle, forState: .Normal)
         self.cancelButton.setTitle(cancelButtonTitle, forState: .Normal)
@@ -73,7 +72,7 @@ class DatePickerDialog: UIView {
         UIApplication.sharedApplication().windows.first!.addSubview(self)
         UIApplication.sharedApplication().windows.first!.endEditing(true)
         
-        NSNotificationCenter.defaultCenter().addObserver(self, selector: "deviceOrientationDidChange:", name: UIDeviceOrientationDidChangeNotification, object: nil)
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(DatePickerDialog.deviceOrientationDidChange(_:)), name: UIDeviceOrientationDidChangeNotification, object: nil)
         
         /* Anim */
         UIView.animateWithDuration(
@@ -191,7 +190,7 @@ class DatePickerDialog: UIView {
         self.cancelButton.setTitleColor(UIColor(red: 0.2, green: 0.2, blue: 0.2, alpha: 0.5), forState: UIControlState.Highlighted)
         self.cancelButton.titleLabel!.font = UIFont.boldSystemFontOfSize(14)
         self.cancelButton.layer.cornerRadius = kDatePickerDialogCornerRadius
-        self.cancelButton.addTarget(self, action: "buttonTapped:", forControlEvents: UIControlEvents.TouchUpInside)
+        self.cancelButton.addTarget(self, action: #selector(DatePickerDialog.buttonTapped(_:)), forControlEvents: UIControlEvents.TouchUpInside)
         container.addSubview(self.cancelButton)
         
         self.doneButton = UIButton(type: UIButtonType.Custom) as UIButton
@@ -206,7 +205,7 @@ class DatePickerDialog: UIView {
         self.doneButton.setTitleColor(UIColor(red: 0.2, green: 0.2, blue: 0.2, alpha: 0.5), forState: UIControlState.Highlighted)
         self.doneButton.titleLabel!.font = UIFont.boldSystemFontOfSize(14)
         self.doneButton.layer.cornerRadius = kDatePickerDialogCornerRadius
-        self.doneButton.addTarget(self, action: "buttonTapped:", forControlEvents: UIControlEvents.TouchUpInside)
+        self.doneButton.addTarget(self, action: #selector(DatePickerDialog.buttonTapped(_:)), forControlEvents: UIControlEvents.TouchUpInside)
         container.addSubview(self.doneButton)
     }
     
