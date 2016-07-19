@@ -7,16 +7,17 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		81787A041A5AFBBA00625482 /* DatePickerDialog.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81787A031A5AFBBA00625482 /* DatePickerDialog.swift */; };
 		81EC6C821A1EADF7009440DB /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81EC6C811A1EADF7009440DB /* AppDelegate.swift */; };
 		81EC6C841A1EADF7009440DB /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81EC6C831A1EADF7009440DB /* ViewController.swift */; };
 		81EC6C871A1EADF7009440DB /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 81EC6C851A1EADF7009440DB /* Main.storyboard */; };
 		81EC6C891A1EADF7009440DB /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 81EC6C881A1EADF7009440DB /* Images.xcassets */; };
-		BC24AA631CDB5DC3006438C4 /* DatePickerDialog.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81787A031A5AFBBA00625482 /* DatePickerDialog.swift */; };
+		C2CA15C21D3ECF7600D1ADCB /* DatePickerDialog.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2CA15C11D3ECF7600D1ADCB /* DatePickerDialog.swift */; };
+		C2CA15C31D3ECF7600D1ADCB /* DatePickerDialog.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2CA15C11D3ECF7600D1ADCB /* DatePickerDialog.swift */; };
+		C2CA15C51D3ECF8B00D1ADCB /* Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = C2CA15C41D3ECF8B00D1ADCB /* Info.plist */; };
+		C2CA15C61D3ECF8B00D1ADCB /* Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = C2CA15C41D3ECF8B00D1ADCB /* Info.plist */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		81787A031A5AFBBA00625482 /* DatePickerDialog.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DatePickerDialog.swift; sourceTree = "<group>"; };
 		81EC6C7C1A1EADF7009440DB /* DatePickerDialogExample.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = DatePickerDialogExample.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		81EC6C801A1EADF7009440DB /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		81EC6C811A1EADF7009440DB /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -24,7 +25,8 @@
 		81EC6C861A1EADF7009440DB /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		81EC6C881A1EADF7009440DB /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		BC24AA5B1CDB5D7A006438C4 /* DatePickerDialogFramework.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = DatePickerDialogFramework.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		BC24AA5F1CDB5D7A006438C4 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		C2CA15C11D3ECF7600D1ADCB /* DatePickerDialog.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = DatePickerDialog.swift; path = ../../Sources/DatePickerDialog.swift; sourceTree = "<group>"; };
+		C2CA15C41D3ECF8B00D1ADCB /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = Info.plist; path = ../../Sources/Info.plist; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -48,7 +50,7 @@
 		81787A021A5AFBBA00625482 /* Library */ = {
 			isa = PBXGroup;
 			children = (
-				81787A031A5AFBBA00625482 /* DatePickerDialog.swift */,
+				C2CA15C11D3ECF7600D1ADCB /* DatePickerDialog.swift */,
 			);
 			path = Library;
 			sourceTree = "<group>";
@@ -104,7 +106,7 @@
 		BC24AA5C1CDB5D7A006438C4 /* DatePickerDialogFramework */ = {
 			isa = PBXGroup;
 			children = (
-				BC24AA5F1CDB5D7A006438C4 /* Info.plist */,
+				C2CA15C41D3ECF8B00D1ADCB /* Info.plist */,
 			);
 			path = DatePickerDialogFramework;
 			sourceTree = "<group>";
@@ -163,7 +165,7 @@
 		81EC6C741A1EADF7009440DB /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				LastSwiftUpdateCheck = 0700;
+				LastSwiftUpdateCheck = 0730;
 				LastUpgradeCheck = 0700;
 				ORGANIZATIONNAME = vinicius;
 				TargetAttributes = {
@@ -201,6 +203,7 @@
 			files = (
 				81EC6C871A1EADF7009440DB /* Main.storyboard in Resources */,
 				81EC6C891A1EADF7009440DB /* Images.xcassets in Resources */,
+				C2CA15C51D3ECF8B00D1ADCB /* Info.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -208,6 +211,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C2CA15C61D3ECF8B00D1ADCB /* Info.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -220,7 +224,7 @@
 			files = (
 				81EC6C841A1EADF7009440DB /* ViewController.swift in Sources */,
 				81EC6C821A1EADF7009440DB /* AppDelegate.swift in Sources */,
-				81787A041A5AFBBA00625482 /* DatePickerDialog.swift in Sources */,
+				C2CA15C21D3ECF7600D1ADCB /* DatePickerDialog.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -228,7 +232,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				BC24AA631CDB5DC3006438C4 /* DatePickerDialog.swift in Sources */,
+				C2CA15C31D3ECF7600D1ADCB /* DatePickerDialog.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -354,6 +358,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ENABLE_MODULES = YES;
 				CURRENT_PROJECT_VERSION = 1;
 				DEBUG_INFORMATION_FORMAT = dwarf;
 				DEFINES_MODULE = YES;
@@ -361,13 +366,14 @@
 				DYLIB_CURRENT_VERSION = 1;
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
 				GCC_NO_COMMON_BLOCKS = YES;
-				INFOPLIST_FILE = DatePickerDialogFramework/Info.plist;
+				INFOPLIST_FILE = "$(SRCROOT)/../Sources/Info.plist";
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.squimer.DatePickerDialogFramework;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				TARGETED_DEVICE_FAMILY = "1,2";
 				VERSIONING_SYSTEM = "apple-generic";
 				VERSION_INFO_PREFIX = "";
@@ -378,6 +384,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ENABLE_MODULES = YES;
 				COPY_PHASE_STRIP = NO;
 				CURRENT_PROJECT_VERSION = 1;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
@@ -386,7 +393,7 @@
 				DYLIB_CURRENT_VERSION = 1;
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
 				GCC_NO_COMMON_BLOCKS = YES;
-				INFOPLIST_FILE = DatePickerDialogFramework/Info.plist;
+				INFOPLIST_FILE = "$(SRCROOT)/../Sources/Info.plist";
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
