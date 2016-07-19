@@ -13,7 +13,7 @@ DatePickerDialog works on iOS 7, 8 and 9. It depends on the following Apple fram
 * QuartzCore
 
 ## Installation
-#### CocoaPods ⚠️ Coming soon ⚠️
+#### CocoaPods
 You can use [CocoaPods](http://cocoapods.org/) to install `DatePickerDialog` by adding it to your `Podfile`:
 
 ```ruby
@@ -28,7 +28,7 @@ To get the full benefits import `DatePickerDialog` wherever you import UIKit
 import UIKit
 import DatePickerDialog
 ```
-#### Carthage ⚠️ Coming soon ⚠️
+#### Carthage
 Create a `Cartfile` that lists the framework and run `carthage bootstrap`. Follow the [instructions](https://github.com/Carthage/Carthage#if-youre-building-for-ios) to add `$(SRCROOT)/Carthage/Build/iOS/DatePickerDialog.framework` to an iOS project.
 
 ```
