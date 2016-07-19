@@ -54,7 +54,11 @@ public class DatePickerDialog: UIView {
     
     /* Handle device orientation changes */
     func deviceOrientationDidChange(notification: NSNotification) {
-        close() // For now just close it
+        
+        self.frame = CGRectMake(0, 0, UIScreen.mainScreen().bounds.size.width, UIScreen.mainScreen().bounds.size.height)
+        let screenSize = countScreenSize()
+        let dialogSize = CGSizeMake(300,230 + kDatePickerDialogDefaultButtonHeight + kDatePickerDialogDefaultButtonSpacerHeight)
+        dialogView.frame = CGRectMake((screenSize.width - dialogSize.width) / 2, (screenSize.height - dialogSize.height) / 2, dialogSize.width, dialogSize.height)
     }
     
     /* Create the dialog view, and animate opening the dialog */
@@ -114,6 +118,8 @@ public class DatePickerDialog: UIView {
                 }
                 
                 self.removeFromSuperview()
+                self.setupView()
+
         }
     }
     
