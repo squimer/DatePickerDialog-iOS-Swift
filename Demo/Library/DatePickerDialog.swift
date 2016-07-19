@@ -3,7 +3,7 @@ import UIKit
 
 public class DatePickerDialog: UIView {
     
-    public typealias DatePickerCallback = (date: NSDate) -> Void
+    public typealias DatePickerCallback = (date: NSDate?) -> Void
     
     /* Consts */
     private let kDatePickerDialogDefaultButtonHeight:       CGFloat = 50
@@ -212,7 +212,10 @@ public class DatePickerDialog: UIView {
     func buttonTapped(sender: UIButton!) {
         if sender.tag == kDatePickerDialogDoneButtonTag {
             self.callback?(date: self.datePicker.date)
-        }
+        } else {
+            
+            self.callback?(date: nil)
+                    }
         
         close()
     }
