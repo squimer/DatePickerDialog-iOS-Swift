@@ -14,7 +14,7 @@ public class DatePickerDialog: UIView {
     /* Views */
     private var dialogView:   UIView!
     private var titleLabel:   UILabel!
-    private var datePicker:   UIDatePicker!
+    public var datePicker:   UIDatePicker!
     private var cancelButton: UIButton!
     private var doneButton:   UIButton!
     
