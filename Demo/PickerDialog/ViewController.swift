@@ -18,7 +18,11 @@ class ViewController: UIViewController {
         
         DatePickerDialog().show("DatePickerDialog", doneButtonTitle: "Done", cancelButtonTitle: "Cancel", minimumDate: threeMonthAgo, maximumDate: currentDate, datePickerMode: .Date) {
             (date) -> Void in
-            self.textField.text = "\(date)"
+            if let dt = date {
+                self.textField.text = "\(dt)"
+            } else {
+                print("")
+            }
         }
         
     }
