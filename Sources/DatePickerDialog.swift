@@ -54,7 +54,6 @@ public class DatePickerDialog: UIView {
     
     /* Handle device orientation changes */
     func deviceOrientationDidChange(notification: NSNotification) {
-        
         self.frame = CGRectMake(0, 0, UIScreen.mainScreen().bounds.size.width, UIScreen.mainScreen().bounds.size.height)
         let screenSize = countScreenSize()
         let dialogSize = CGSizeMake(300,230 + kDatePickerDialogDefaultButtonHeight + kDatePickerDialogDefaultButtonSpacerHeight)
@@ -62,7 +61,7 @@ public class DatePickerDialog: UIView {
     }
     
     /* Create the dialog view, and animate opening the dialog */
-    public func show(title: String, doneButtonTitle: String = "Done", cancelButtonTitle: String = "Cancel", defaultDate: NSDate = NSDate(), datePickerMode: UIDatePickerMode = .DateAndTime, callback: DatePickerCallback) {
+    public func show(title: String, doneButtonTitle: String = "Done", cancelButtonTitle: String = "Cancel", defaultDate: NSDate = NSDate(), minimumDate: NSDate? = nil, maximumDate: NSDate? = nil, datePickerMode: UIDatePickerMode = .DateAndTime, callback: DatePickerCallback) {
         self.titleLabel.text = title
         self.doneButton.setTitle(doneButtonTitle, forState: .Normal)
         self.cancelButton.setTitle(cancelButtonTitle, forState: .Normal)
@@ -71,6 +70,8 @@ public class DatePickerDialog: UIView {
         self.defaultDate = defaultDate
         self.datePicker.datePickerMode = self.datePickerMode ?? .Date
         self.datePicker.date = self.defaultDate ?? NSDate()
+        self.datePicker.maximumDate = maximumDate
+        self.datePicker.minimumDate = minimumDate
         
         /* */
         UIApplication.sharedApplication().windows.first!.addSubview(self)
@@ -119,7 +120,6 @@ public class DatePickerDialog: UIView {
                 
                 self.removeFromSuperview()
                 self.setupView()
-
         }
     }
     
@@ -219,9 +219,8 @@ public class DatePickerDialog: UIView {
         if sender.tag == kDatePickerDialogDoneButtonTag {
             self.callback?(date: self.datePicker.date)
         } else {
-            
-            self.callback?(date: nil)
-                    }
+          self.callback?(date: nil)
+        }
         
         close()
     }

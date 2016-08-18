@@ -11,8 +11,7 @@
 		81EC6C841A1EADF7009440DB /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81EC6C831A1EADF7009440DB /* ViewController.swift */; };
 		81EC6C871A1EADF7009440DB /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 81EC6C851A1EADF7009440DB /* Main.storyboard */; };
 		81EC6C891A1EADF7009440DB /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 81EC6C881A1EADF7009440DB /* Images.xcassets */; };
-		C2CA15C21D3ECF7600D1ADCB /* DatePickerDialog.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2CA15C11D3ECF7600D1ADCB /* DatePickerDialog.swift */; };
-		C2CA15C31D3ECF7600D1ADCB /* DatePickerDialog.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2CA15C11D3ECF7600D1ADCB /* DatePickerDialog.swift */; };
+		8C87795D1D64BE0500226A00 /* DatePickerDialog.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C87795C1D64BE0500226A00 /* DatePickerDialog.swift */; };
 		C2CA15C51D3ECF8B00D1ADCB /* Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = C2CA15C41D3ECF8B00D1ADCB /* Info.plist */; };
 		C2CA15C61D3ECF8B00D1ADCB /* Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = C2CA15C41D3ECF8B00D1ADCB /* Info.plist */; };
 /* End PBXBuildFile section */
@@ -24,8 +23,8 @@
 		81EC6C831A1EADF7009440DB /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		81EC6C861A1EADF7009440DB /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		81EC6C881A1EADF7009440DB /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
+		8C87795C1D64BE0500226A00 /* DatePickerDialog.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = DatePickerDialog.swift; path = ../../Sources/DatePickerDialog.swift; sourceTree = "<group>"; };
 		BC24AA5B1CDB5D7A006438C4 /* DatePickerDialogFramework.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = DatePickerDialogFramework.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		C2CA15C11D3ECF7600D1ADCB /* DatePickerDialog.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = DatePickerDialog.swift; path = ../../Sources/DatePickerDialog.swift; sourceTree = "<group>"; };
 		C2CA15C41D3ECF8B00D1ADCB /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = Info.plist; path = ../../Sources/Info.plist; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -50,7 +49,7 @@
 		81787A021A5AFBBA00625482 /* Library */ = {
 			isa = PBXGroup;
 			children = (
-				C2CA15C11D3ECF7600D1ADCB /* DatePickerDialog.swift */,
+				8C87795C1D64BE0500226A00 /* DatePickerDialog.swift */,
 			);
 			path = Library;
 			sourceTree = "<group>";
@@ -224,7 +223,7 @@
 			files = (
 				81EC6C841A1EADF7009440DB /* ViewController.swift in Sources */,
 				81EC6C821A1EADF7009440DB /* AppDelegate.swift in Sources */,
-				C2CA15C21D3ECF7600D1ADCB /* DatePickerDialog.swift in Sources */,
+				8C87795D1D64BE0500226A00 /* DatePickerDialog.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -232,7 +231,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				C2CA15C31D3ECF7600D1ADCB /* DatePickerDialog.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
