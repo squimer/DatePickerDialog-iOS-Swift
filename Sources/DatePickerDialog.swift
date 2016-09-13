@@ -74,8 +74,10 @@ public class DatePickerDialog: UIView {
         self.datePicker.minimumDate = minimumDate
         
         /* */
-        UIApplication.sharedApplication().windows.first!.addSubview(self)
-        UIApplication.sharedApplication().windows.first!.endEditing(true)
+        let appDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
+        appDelegate.window?.addSubview(self)
+        appDelegate.window?.bringSubviewToFront(self)
+        appDelegate.window?.endEditing(true)
         
         NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(DatePickerDialog.deviceOrientationDidChange(_:)), name: UIDeviceOrientationDidChangeNotification, object: nil)
         
