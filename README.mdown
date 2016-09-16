@@ -69,7 +69,6 @@ class ViewController: UIViewController {
 ## Todo
 
 - Handle device orientation changes.
-- Improve performance.
 
 ## Special thanks to
 
