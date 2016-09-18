@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		4B025BDB1D8F3F89000CF209 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4B025BD81D8F3EC2000CF209 /* Main.storyboard */; };
+		4B025BDD1D8F43FB000CF209 /* Launch Screen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4B025BDC1D8F43FB000CF209 /* Launch Screen.storyboard */; };
 		4B1E9F521D8F3CED00C1EF25 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B1E9F4A1D8F3CED00C1EF25 /* AppDelegate.swift */; };
 		4B1E9F531D8F3CED00C1EF25 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4B1E9F4B1D8F3CED00C1EF25 /* Assets.xcassets */; };
 		4B1E9F571D8F3CEE00C1EF25 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B1E9F511D8F3CED00C1EF25 /* ViewController.swift */; };
@@ -28,6 +29,7 @@
 
 /* Begin PBXFileReference section */
 		4B025BD81D8F3EC2000CF209 /* Main.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Main.storyboard; sourceTree = "<group>"; };
+		4B025BDC1D8F43FB000CF209 /* Launch Screen.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = "Launch Screen.storyboard"; sourceTree = "<group>"; };
 		4B1E9F371D8F3C9A00C1EF25 /* DatePickerDialogExample.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = DatePickerDialogExample.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		4B1E9F4A1D8F3CED00C1EF25 /* AppDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		4B1E9F4B1D8F3CED00C1EF25 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -73,6 +75,7 @@
 				4B1E9F4A1D8F3CED00C1EF25 /* AppDelegate.swift */,
 				4B1E9F4B1D8F3CED00C1EF25 /* Assets.xcassets */,
 				4B1E9F501D8F3CED00C1EF25 /* Info.plist */,
+				4B025BDC1D8F43FB000CF209 /* Launch Screen.storyboard */,
 				4B025BD81D8F3EC2000CF209 /* Main.storyboard */,
 				4B1E9F511D8F3CED00C1EF25 /* ViewController.swift */,
 			);
@@ -233,6 +236,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				4B025BDD1D8F43FB000CF209 /* Launch Screen.storyboard in Resources */,
 				4B1E9F531D8F3CED00C1EF25 /* Assets.xcassets in Resources */,
 				4B025BDB1D8F3F89000CF209 /* Main.storyboard in Resources */,
 			);
