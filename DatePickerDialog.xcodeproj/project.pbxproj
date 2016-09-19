@@ -12,6 +12,7 @@
 		4B025BEA1D8F46E2000CF209 /* Launch Screen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4B025BE41D8F46E2000CF209 /* Launch Screen.storyboard */; };
 		4B025BEB1D8F46E2000CF209 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4B025BE51D8F46E2000CF209 /* Main.storyboard */; };
 		4B025BEF1D8F4766000CF209 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4B025BED1D8F4766000CF209 /* Assets.xcassets */; };
+		4BBB68A11D8FDAC500413949 /* DatePickerDialog.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4BDE05A31D8F3AF000DEF7F3 /* DatePickerDialog.framework */; };
 		4BDE05AD1D8F3AF000DEF7F3 /* DatePickerDialog.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4BDE05A31D8F3AF000DEF7F3 /* DatePickerDialog.framework */; };
 		4BDE05C51D8F3B7D00DEF7F3 /* DatePickerDialog.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4BDE05C01D8F3B7C00DEF7F3 /* DatePickerDialog.swift */; };
 		4BDE05C91D8F3B8500DEF7F3 /* DatePickerDialogTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4BDE05C31D8F3B7D00DEF7F3 /* DatePickerDialogTests.swift */; };
@@ -45,6 +46,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				4BBB68A11D8FDAC500413949 /* DatePickerDialog.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
