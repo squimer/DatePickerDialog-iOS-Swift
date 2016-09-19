@@ -66,10 +66,6 @@ class ViewController: UIViewController {
 - datePickerMode: UIDatePickerMode **(Required)**
 - callback: ((date: Date) -> Void) **(Required)**
 
-## Todo
-
-- Handle device orientation changes.
-
 ## Special thanks to
 
 * [@wimagguc](https://github.com/wimagguc) for the work with [ios-custom-alertview](https://github.com/wimagguc/ios-custom-alertview) library.

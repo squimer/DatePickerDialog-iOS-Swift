@@ -7,32 +7,29 @@ private extension Selector {
 }
 
 public class DatePickerDialog: UIView {
-
     public typealias DatePickerCallback = (_ date: Date?) -> Void
 
-    /* Consts */
+    // MARK: - Constants
     private let kDatePickerDialogDefaultButtonHeight:       CGFloat = 50
     private let kDatePickerDialogDefaultButtonSpacerHeight: CGFloat = 1
     private let kDatePickerDialogCornerRadius:              CGFloat = 7
     private let kDatePickerDialogDoneButtonTag:             Int     = 1
 
-    /* Views */
+    // MARK: - Views
     private var dialogView:   UIView!
     private var titleLabel:   UILabel!
     public var datePicker:    UIDatePicker!
     private var cancelButton: UIButton!
     private var doneButton:   UIButton!
 
-    /* Vars */
+    // MARK: - Variables
     private var defaultDate:    Date?
     private var datePickerMode: UIDatePickerMode?
     private var callback:       DatePickerCallback?
 
-
-    /* Overrides */
-    public init() {
+    // MARK: - Dialog initialization
+    override init(frame: CGRect) {
         super.init(frame: CGRect(x: 0, y: 0, width: UIScreen.main.bounds.size.width, height: UIScreen.main.bounds.size.height))
-
         setupView()
     }
 
@@ -57,7 +54,7 @@ public class DatePickerDialog: UIView {
         self.addSubview(self.dialogView!)
     }
 
-    /* Handle device orientation changes */
+    /// Handle device orientation changes
     func deviceOrientationDidChange(notification: NSNotification) {
         self.frame = CGRect(x: 0, y: 0, width: UIScreen.main.bounds.size.width, height: UIScreen.main.bounds.size.height)
         let screenSize = countScreenSize()
@@ -65,7 +62,7 @@ public class DatePickerDialog: UIView {
         dialogView.frame = CGRect(x: (screenSize.width - dialogSize.width) / 2, y: (screenSize.height - dialogSize.height) / 2, width: dialogSize.width, height: dialogSize.height)
     }
 
-    /* Create the dialog view, and animate opening the dialog */
+    /// Create the dialog view, and animate opening the dialog
     public func show(title: String, doneButtonTitle: String = "Done", cancelButtonTitle: String = "Cancel", defaultDate: Date = Date(), minimumDate: Date? = nil, maximumDate: Date? = nil, datePickerMode: UIDatePickerMode = .dateAndTime, callback: @escaping DatePickerCallback) {
         self.titleLabel.text = title
         self.doneButton.setTitle(doneButtonTitle, for: .normal)
@@ -78,7 +75,7 @@ public class DatePickerDialog: UIView {
         self.datePicker.maximumDate = maximumDate
         self.datePicker.minimumDate = minimumDate
 
-        /* */
+        /* Add dialog to main window */
         guard let appDelegate = UIApplication.shared.delegate else { fatalError() }
         guard let window = appDelegate.window else { fatalError() }
         window?.addSubview(self)
@@ -92,16 +89,15 @@ public class DatePickerDialog: UIView {
             withDuration: 0.2,
             delay: 0,
             options: .curveEaseInOut,
-            animations: { () -> Void in
+            animations: {
                 self.backgroundColor = UIColor(red: 0, green: 0, blue: 0, alpha: 0.4)
                 self.dialogView!.layer.opacity = 1
                 self.dialogView!.layer.transform = CATransform3DMakeScale(1, 1, 1)
-            },
-            completion: nil
+            }
         )
     }
 
-    /* Dialog close animation then cleaning and removing the view from the parent */
+    /// Dialog close animation then cleaning and removing the view from the parent
     private func close() {
         NotificationCenter.default.removeObserver(self)
 
@@ -117,11 +113,11 @@ public class DatePickerDialog: UIView {
             withDuration: 0.2,
             delay: 0,
             options: [],
-            animations: { () -> Void in
+            animations: {
                 self.backgroundColor = UIColor(red: 0, green: 0, blue: 0, alpha: 0)
                 self.dialogView.layer.transform = CATransform3DConcat(currentTransform, CATransform3DMakeScale(0.6, 0.6, 1))
                 self.dialogView.layer.opacity = 0
-        }) { (finished: Bool) -> Void in
+        }) { (finished) in
             for v in self.subviews {
                 v.removeFromSuperview()
             }
@@ -131,7 +127,7 @@ public class DatePickerDialog: UIView {
         }
     }
 
-    /* Creates the container view here: create the dialog, then add the custom content and buttons */
+    /// Creates the container view here: create the dialog, then add the custom content and buttons
     private func createContainerView() -> UIView {
         let screenSize = countScreenSize()
         let dialogSize = CGSize(
@@ -170,7 +166,6 @@ public class DatePickerDialog: UIView {
         let lineView = UIView(frame: CGRect(x: 0, y: dialogContainer.bounds.size.height - kDatePickerDialogDefaultButtonHeight - kDatePickerDialogDefaultButtonSpacerHeight, width: dialogContainer.bounds.size.width, height: kDatePickerDialogDefaultButtonSpacerHeight))
         lineView.backgroundColor = UIColor(red: 198/255, green: 198/255, blue: 198/255, alpha: 1)
         dialogContainer.addSubview(lineView)
-        // ˆˆˆ
 
         //Title
         self.titleLabel = UILabel(frame: CGRect(x: 10, y: 10, width: 280, height: 30))
@@ -189,7 +184,7 @@ public class DatePickerDialog: UIView {
         return dialogContainer
     }
 
-    /* Add buttons to container */
+    /// Add buttons to container
     private func addButtonsToView(container: UIView) {
         let buttonWidth = container.bounds.size.width / 2
 
@@ -233,7 +228,9 @@ public class DatePickerDialog: UIView {
         close()
     }
 
-    /* Helper function: count and return the screen's size */
+    // MARK: - Helpers
+
+    /// Count and return the screen's size
     func countScreenSize() -> CGSize {
         let screenWidth = UIScreen.main.bounds.size.width
         let screenHeight = UIScreen.main.bounds.size.height
