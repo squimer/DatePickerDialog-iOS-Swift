@@ -176,6 +176,7 @@ public class DatePickerDialog: UIView {
         self.datePicker = UIDatePicker(frame: CGRect(x: 0, y: 30, width: 0, height: 0))
         self.datePicker.autoresizingMask = .flexibleRightMargin
         self.datePicker.frame.size.width = 300
+        self.datePicker.frame.size.height = 216
         dialogContainer.addSubview(self.datePicker)
 
         // Add the buttons
