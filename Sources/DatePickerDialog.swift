@@ -10,22 +10,22 @@ open class DatePickerDialog: UIView {
     public typealias DatePickerCallback = ( Date? ) -> Void
     
     // MARK: - Constants
-    fileprivate let kDatePickerDialogDefaultButtonHeight:       CGFloat = 50
-    fileprivate let kDatePickerDialogDefaultButtonSpacerHeight: CGFloat = 1
-    fileprivate let kDatePickerDialogCornerRadius:              CGFloat = 7
-    fileprivate let kDatePickerDialogDoneButtonTag:             Int     = 1
+    private let kDatePickerDialogDefaultButtonHeight:       CGFloat = 50
+    private let kDatePickerDialogDefaultButtonSpacerHeight: CGFloat = 1
+    private let kDatePickerDialogCornerRadius:              CGFloat = 7
+    private let kDatePickerDialogDoneButtonTag:             Int     = 1
     
     // MARK: - Views
-    fileprivate var dialogView:   UIView!
-    fileprivate var titleLabel:   UILabel!
+    private var dialogView:   UIView!
+    private var titleLabel:   UILabel!
     open var datePicker:    UIDatePicker!
-    fileprivate var cancelButton: UIButton!
-    fileprivate var doneButton:   UIButton!
+    private var cancelButton: UIButton!
+    private var doneButton:   UIButton!
     
     // MARK: - Variables
-    fileprivate var defaultDate:    Date?
-    fileprivate var datePickerMode: UIDatePickerMode?
-    fileprivate var callback:       DatePickerCallback?
+    private var defaultDate:    Date?
+    private var datePickerMode: UIDatePickerMode?
+    private var callback:       DatePickerCallback?
     
     // MARK: - Dialog initialization
     override init(frame: CGRect) {
