@@ -189,13 +189,24 @@ open class DatePickerDialog: UIView {
     private func addButtonsToView(container: UIView) {
         let buttonWidth = container.bounds.size.width / 2
         
-        self.cancelButton = UIButton(type: .custom) as UIButton
-        self.cancelButton.frame = CGRect(
+        let leftButtonFrame = CGRect(
             x: 0,
             y: container.bounds.size.height - kDatePickerDialogDefaultButtonHeight,
             width: buttonWidth,
             height: kDatePickerDialogDefaultButtonHeight
         )
+        let rightButtonFrame = CGRect(
+            x: buttonWidth,
+            y: container.bounds.size.height - kDatePickerDialogDefaultButtonHeight,
+            width: buttonWidth,
+            height: kDatePickerDialogDefaultButtonHeight
+        )
+        
+        let interfaceLayoutDirection = UIApplication.shared.userInterfaceLayoutDirection
+        let isLeftToRightDirection = interfaceLayoutDirection == .leftToRight
+        
+        self.cancelButton = UIButton(type: .custom) as UIButton
+        self.cancelButton.frame = isLeftToRightDirection ? leftButtonFrame : rightButtonFrame
         self.cancelButton.setTitleColor(UIColor(red: 0, green: 0.5, blue: 1, alpha: 1), for: .normal)
         self.cancelButton.setTitleColor(UIColor(red: 0.2, green: 0.2, blue: 0.2, alpha: 0.5), for: .highlighted)
         self.cancelButton.titleLabel!.font = UIFont.boldSystemFont(ofSize: 14)
@@ -204,12 +215,7 @@ open class DatePickerDialog: UIView {
         container.addSubview(self.cancelButton)
         
         self.doneButton = UIButton(type: .custom) as UIButton
-        self.doneButton.frame = CGRect(
-            x: buttonWidth,
-            y: container.bounds.size.height - kDatePickerDialogDefaultButtonHeight,
-            width: buttonWidth,
-            height: kDatePickerDialogDefaultButtonHeight
-        )
+        self.doneButton.frame = isLeftToRightDirection ? rightButtonFrame : leftButtonFrame
         self.doneButton.tag = kDatePickerDialogDoneButtonTag
         self.doneButton.setTitleColor(UIColor(red: 0, green: 0.5, blue: 1, alpha: 1), for: .normal)
         self.doneButton.setTitleColor(UIColor(red: 0.2, green: 0.2, blue: 0.2, alpha: 0.5), for: .highlighted)
