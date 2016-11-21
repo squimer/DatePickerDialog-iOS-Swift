@@ -11,6 +11,10 @@ DatePickerDialog works on iOS 7, 8 and 9. It depends on the following Apple fram
 * Foundation
 * UIKit
 
+#### Swift Versions
+- Swift 3 (master)
+- Swift 2.3 (```swift_2.3``` branch)
+
 ## Installation
 #### CocoaPods
 You can use [CocoaPods](http://cocoapods.org/) to install `DatePickerDialog` by adding it to your `Podfile`:
