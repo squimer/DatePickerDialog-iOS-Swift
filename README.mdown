@@ -61,6 +61,15 @@ class ViewController: UIViewController {
 }
 ```
 
+## Dialog parameters
+- showCancelButton: Bool - default true
+
+Example without 'Cancel' button:
+``` swift
+DatePickerDialog(showCancelButton: false).show(title: "DatePicker", doneButtonTitle: "Done", datePickerMode: .date)
+```
+
+
 ## Show parameters
 
 - title: String **(Required)**
@@ -76,4 +85,4 @@ class ViewController: UIViewController {
 
 ## License
 
-This code is distributed under the terms and conditions of the [MIT license](LICENSE). 
+This code is distributed under the terms and conditions of the [MIT license](LICENSE).
