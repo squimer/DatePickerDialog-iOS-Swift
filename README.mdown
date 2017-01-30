@@ -76,6 +76,8 @@ DatePickerDialog(showCancelButton: false).show(title: "DatePicker", doneButtonTi
 - doneButtonTitle: String
 - cancelButtonTitle: String
 - defaultDate: Date
+- minimumDate: Date
+- maximumDate: Date
 - datePickerMode: UIDatePickerMode **(Required)**
 - callback: ((date: Date) -> Void) **(Required)**
 
