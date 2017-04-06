@@ -27,11 +27,13 @@ open class DatePickerDialog: UIView {
     private var datePickerMode: UIDatePickerMode?
     private var callback:       DatePickerCallback?
     var showCancelButton:Bool = false
+    var locale: Locale?
     
     // MARK: - Dialog initialization
-    public init(showCancelButton:Bool = true) {
+    public init(showCancelButton:Bool = true, locale: Locale? = nil) {
         super.init(frame: CGRect(x: 0, y: 0, width: UIScreen.main.bounds.size.width, height: UIScreen.main.bounds.size.height))
         self.showCancelButton = showCancelButton
+        self.locale = locale
         setupView()
     }
     
@@ -78,7 +80,9 @@ open class DatePickerDialog: UIView {
         self.datePicker.date = self.defaultDate ?? Date()
         self.datePicker.maximumDate = maximumDate
         self.datePicker.minimumDate = minimumDate
-        
+        if let locale = self.locale {
+            self.datePicker.locale = locale
+        }
         /* Add dialog to main window */
         guard let appDelegate = UIApplication.shared.delegate else { fatalError() }
         guard let window = appDelegate.window else { fatalError() }

@@ -63,10 +63,16 @@ class ViewController: UIViewController {
 
 ## Dialog parameters
 - showCancelButton: Bool - default true
+- locale: Locale? - default nil
 
 Example without 'Cancel' button:
 ``` swift
 DatePickerDialog(showCancelButton: false).show(title: "DatePicker", doneButtonTitle: "Done", datePickerMode: .date)
+```
+
+Example with custom locale:
+``` swift
+DatePickerDialog(locale: Locale(identifier: "es_PY")).show(title: "DatePicker", doneButtonTitle: "Done", datePickerMode: .date)
 ```
 
 
