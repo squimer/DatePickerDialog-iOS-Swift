@@ -27,10 +27,16 @@ open class DatePickerDialog: UIView {
     private var datePickerMode: UIDatePickerMode?
     private var callback:       DatePickerCallback?
     var showCancelButton:Bool = false
+    private var textColor:      UIColor!
+    private var buttonColor:    UIColor!
+    private var font:           UIFont!
     
     // MARK: - Dialog initialization
-    public init(showCancelButton:Bool = true) {
+    public init(textColor: UIColor = UIColor.black, buttonColor: UIColor = UIColor.blue, font: UIFont = .boldSystemFont(ofSize: 15), showCancelButton:Bool = true) {
         super.init(frame: CGRect(x: 0, y: 0, width: UIScreen.main.bounds.size.width, height: UIScreen.main.bounds.size.height))
+        self.textColor = textColor
+        self.buttonColor = buttonColor
+        self.font = font
         self.showCancelButton = showCancelButton
         setupView()
     }
@@ -38,7 +44,7 @@ open class DatePickerDialog: UIView {
     required public init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
     }
-   
+    
     func setupView() {
         self.dialogView = createContainerView()
         
@@ -97,7 +103,7 @@ open class DatePickerDialog: UIView {
                 self.backgroundColor = UIColor(red: 0, green: 0, blue: 0, alpha: 0.4)
                 self.dialogView!.layer.opacity = 1
                 self.dialogView!.layer.transform = CATransform3DMakeScale(1, 1, 1)
-            }
+        }
         )
     }
     
@@ -108,7 +114,7 @@ open class DatePickerDialog: UIView {
         let currentTransform = self.dialogView.layer.transform
         
         let startRotation = (self.value(forKeyPath: "layer.transform.rotation.z") as? NSNumber) as? Double ?? 0.0
-        let rotation = CATransform3DMakeRotation((CGFloat)(-startRotation + M_PI * 270 / 180), 0, 0, 0)
+        let rotation = CATransform3DMakeRotation((CGFloat)(-startRotation + .pi * 270 / 180), 0, 0, 0)
         
         self.dialogView.layer.transform = CATransform3DConcat(rotation, CATransform3DMakeScale(1, 1, 1))
         self.dialogView.layer.opacity = 1
@@ -174,10 +180,12 @@ open class DatePickerDialog: UIView {
         //Title
         self.titleLabel = UILabel(frame: CGRect(x: 10, y: 10, width: 280, height: 30))
         self.titleLabel.textAlignment = .center
-        self.titleLabel.font = UIFont.boldSystemFont(ofSize: 17)
+        self.titleLabel.textColor = self.textColor
+        self.titleLabel.font = self.font.withSize(17)
         dialogContainer.addSubview(self.titleLabel)
         
         self.datePicker = UIDatePicker(frame: CGRect(x: 0, y: 30, width: 0, height: 0))
+        self.datePicker.setValue(self.textColor, forKeyPath: "textColor")
         self.datePicker.autoresizingMask = .flexibleRightMargin
         self.datePicker.frame.size.width = 300
         self.datePicker.frame.size.height = 216
@@ -221,9 +229,9 @@ open class DatePickerDialog: UIView {
         if showCancelButton {
             self.cancelButton = UIButton(type: .custom) as UIButton
             self.cancelButton.frame = isLeftToRightDirection ? leftButtonFrame : rightButtonFrame
-            self.cancelButton.setTitleColor(UIColor(red: 0, green: 0.5, blue: 1, alpha: 1), for: .normal)
-            self.cancelButton.setTitleColor(UIColor(red: 0.2, green: 0.2, blue: 0.2, alpha: 0.5), for: .highlighted)
-            self.cancelButton.titleLabel!.font = UIFont.boldSystemFont(ofSize: 14)
+            self.cancelButton.setTitleColor(self.buttonColor, for: .normal)
+            self.cancelButton.setTitleColor(self.buttonColor, for: .highlighted)
+            self.cancelButton.titleLabel!.font = self.font.withSize(14)
             self.cancelButton.layer.cornerRadius = kDatePickerDialogCornerRadius
             self.cancelButton.addTarget(self, action: .buttonTapped, for: .touchUpInside)
             container.addSubview(self.cancelButton)
@@ -231,9 +239,9 @@ open class DatePickerDialog: UIView {
         self.doneButton = UIButton(type: .custom) as UIButton
         self.doneButton.frame = isLeftToRightDirection ? rightButtonFrame : leftButtonFrame
         self.doneButton.tag = kDatePickerDialogDoneButtonTag
-        self.doneButton.setTitleColor(UIColor(red: 0, green: 0.5, blue: 1, alpha: 1), for: .normal)
-        self.doneButton.setTitleColor(UIColor(red: 0.2, green: 0.2, blue: 0.2, alpha: 0.5), for: .highlighted)
-        self.doneButton.titleLabel!.font = UIFont.boldSystemFont(ofSize: 14)
+        self.doneButton.setTitleColor(self.buttonColor, for: .normal)
+        self.doneButton.setTitleColor(self.buttonColor, for: .highlighted)
+        self.doneButton.titleLabel!.font = self.font.withSize(14)
         self.doneButton.layer.cornerRadius = kDatePickerDialogCornerRadius
         self.doneButton.addTarget(self, action: .buttonTapped, for: .touchUpInside)
         container.addSubview(self.doneButton)
