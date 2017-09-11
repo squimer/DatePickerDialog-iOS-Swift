@@ -45,20 +45,16 @@ github "squimer/DatePickerDialog-iOS-Swift"
 ## Example
 
 ```swift
-import UIKit
-import DatePickerDialog
-
-class ViewController: UIViewController {
-	@IBOutlet weak var textField: UITextField!
-
-	// MARK: - IBActions
-	@IBAction func datePickerTapped(sender: AnyObject) {
+	func datePickerTapped() {
 		DatePickerDialog().show(title: "DatePicker", doneButtonTitle: "Done", cancelButtonTitle: "Cancel", datePickerMode: .date) {
 			(date) -> Void in
-			self.textField.text = "\(date)"
+			if let dt = date {
+                		let formatter = DateFormatter()
+                		formatter.dateFormat = "MM/dd/yyyy"
+                		self.textField.text = formatter.string(from: dt)
+            		}
 		}
 	}
-}
 ```
 
 ## Dialog parameters
