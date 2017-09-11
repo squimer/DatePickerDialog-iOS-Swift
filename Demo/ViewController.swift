@@ -4,7 +4,12 @@ import DatePickerDialog
 class ViewController: UIViewController {
     @IBOutlet weak var textField: UITextField!
 
-    @IBAction func datePickerTapped(sender: AnyObject) {
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        textField.delegate = self
+    }
+    
+    func datePickerTapped() {
         let currentDate = Date()
         var dateComponents = DateComponents()
         dateComponents.month = -3
@@ -18,5 +23,17 @@ class ViewController: UIViewController {
                 self.textField.text = formatter.string(from: dt)
             }
         }
+    }
+}
+
+extension ViewController: UITextFieldDelegate {
+    
+    func textFieldShouldBeginEditing(_ textField: UITextField) -> Bool {
+        if textField == self.textField {
+            datePickerTapped()
+            return false
+        }
+        
+        return true
     }
 }
