@@ -15,8 +15,16 @@ class ViewController: UIViewController {
         dateComponents.month = -3
         let threeMonthAgo = Calendar.current.date(byAdding: dateComponents, to: currentDate)
 
-        let datePicker = DatePickerDialog(textColor: .red, buttonColor: .red, font: UIFont.boldSystemFont(ofSize: 17), showCancelButton: true)
-        datePicker.show("DatePickerDialog", doneButtonTitle: "Done", cancelButtonTitle: "Cancel", minimumDate: threeMonthAgo, maximumDate: currentDate, datePickerMode: .date) { (date) in
+        let datePicker = DatePickerDialog(textColor: .red,
+                                          buttonColor: .red,
+                                          font: UIFont.boldSystemFont(ofSize: 17),
+                                          showCancelButton: true)
+        datePicker.show("DatePickerDialog",
+                        doneButtonTitle: "Done",
+                        cancelButtonTitle: "Cancel",
+                        minimumDate: threeMonthAgo,
+                        maximumDate: currentDate,
+                        datePickerMode: .date) { (date) in
             if let dt = date {
                 let formatter = DateFormatter()
                 formatter.dateFormat = "MM/dd/yyyy"
