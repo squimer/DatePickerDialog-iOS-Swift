@@ -97,9 +97,12 @@ open class DatePickerDialog: UIView {
         self.callback = callback
         self.defaultDate = defaultDate
         self.datePicker.datePickerMode = self.datePickerMode ?? UIDatePickerMode.date
-        self.datePicker.date = self.defaultDate ?? Date()
         self.datePicker.maximumDate = maximumDate
         self.datePicker.minimumDate = minimumDate
+        
+        // This needs to be set after the `minimumDate` or you end up with the minimumDate displayed. You *could* do this in the calling/client code (i.e., self.datePicker is public), but you may get scrolling while the picker is displayed. Which is less than good UX.
+        self.datePicker.date = self.defaultDate ?? Date()
+
         if let locale = self.locale {
             self.datePicker.locale = locale
         }
