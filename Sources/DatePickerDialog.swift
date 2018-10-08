@@ -28,6 +28,7 @@ open class DatePickerDialog: UIView {
     private var callback: DatePickerCallback?
     var showCancelButton: Bool = false
     var locale: Locale?
+    var calendar: Calendar?
 
     private var textColor: UIColor!
     private var buttonColor: UIColor!
@@ -38,6 +39,7 @@ open class DatePickerDialog: UIView {
                 buttonColor: UIColor = UIColor.blue,
                 font: UIFont = .boldSystemFont(ofSize: 15),
                 locale: Locale? = nil,
+                calendar: Calendar? = nil,
                 showCancelButton: Bool = true) {
         let size = UIScreen.main.bounds.size
         super.init(frame: CGRect(x: 0, y: 0, width: size.width, height: size.height))
@@ -46,6 +48,7 @@ open class DatePickerDialog: UIView {
         self.font = font
         self.showCancelButton = showCancelButton
         self.locale = locale
+        self.calendar = calendar
         setupView()
     }
 
@@ -102,6 +105,9 @@ open class DatePickerDialog: UIView {
         self.datePicker.minimumDate = minimumDate
         if let locale = self.locale {
             self.datePicker.locale = locale
+        }
+        if let calendar = self.calendar {
+            self.datePicker.calendar = calendar
         }
         /* Add dialog to main window */
         guard let appDelegate = UIApplication.shared.delegate else { fatalError() }
