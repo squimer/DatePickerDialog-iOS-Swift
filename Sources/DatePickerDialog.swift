@@ -24,14 +24,16 @@ open class DatePickerDialog: UIView {
 
     // MARK: - Variables
     private var defaultDate: Date?
-    private var datePickerMode: UIDatePickerMode?
+    private var datePickerMode: UIDatePicker.Mode?
     private var callback: DatePickerCallback?
     var showCancelButton: Bool = false
+    open var allowBackgroundTapDismiss: Bool = false
     var locale: Locale?
 
     private var textColor: UIColor!
     private var buttonColor: UIColor!
     private var font: UIFont!
+    private var tapRecognizer:UITapGestureRecognizer?
 
     // MARK: - Dialog initialization
     public init(textColor: UIColor = UIColor.black,
@@ -86,7 +88,7 @@ open class DatePickerDialog: UIView {
                    cancelButtonTitle: String = "Cancel",
                    defaultDate: Date = Date(),
                    minimumDate: Date? = nil, maximumDate: Date? = nil,
-                   datePickerMode: UIDatePickerMode = .dateAndTime,
+                   datePickerMode: UIDatePicker.Mode = .dateAndTime,
                    callback: @escaping DatePickerCallback) {
         self.titleLabel.text = title
         self.doneButton.setTitle(doneButtonTitle, for: .normal)
@@ -96,23 +98,32 @@ open class DatePickerDialog: UIView {
         self.datePickerMode = datePickerMode
         self.callback = callback
         self.defaultDate = defaultDate
-        self.datePicker.datePickerMode = self.datePickerMode ?? UIDatePickerMode.date
-        self.datePicker.date = self.defaultDate ?? Date()
+        self.datePicker.datePickerMode = self.datePickerMode ?? UIDatePicker.Mode.date
         self.datePicker.maximumDate = maximumDate
         self.datePicker.minimumDate = minimumDate
+        
+        // This needs to be set after the `minimumDate` or you end up with the minimumDate displayed. You *could* do this in the calling/client code (i.e., self.datePicker is public), but you may get scrolling while the picker is displayed. Which is less than good UX.
+        self.datePicker.date = self.defaultDate ?? Date()
+
         if let locale = self.locale {
             self.datePicker.locale = locale
         }
         /* Add dialog to main window */
         guard let appDelegate = UIApplication.shared.delegate else { fatalError() }
         guard let window = appDelegate.window else { fatalError() }
+        
+        if allowBackgroundTapDismiss {
+            tapRecognizer = UITapGestureRecognizer(target: self, action: #selector(tapAction))
+            window?.addGestureRecognizer(tapRecognizer!)
+        }
+        
         window?.addSubview(self)
-        window?.bringSubview(toFront: self)
+        window?.bringSubviewToFront(self)
         window?.endEditing(true)
 
         NotificationCenter.default.addObserver(self,
                                                selector: .deviceOrientationDidChange,
-                                               name: NSNotification.Name.UIDeviceOrientationDidChange, object: nil)
+                                               name: UIDevice.orientationDidChangeNotification, object: nil)
 
         /* Anim */
         UIView.animate(
@@ -126,9 +137,25 @@ open class DatePickerDialog: UIView {
         }
         )
     }
+    
+    @objc private func tapAction(tapGesture: UITapGestureRecognizer) {
+        guard let appDelegate = UIApplication.shared.delegate else { fatalError() }
+        guard let window = appDelegate.window else { fatalError() }
+        
+        let location = tapGesture.location(in: nil)
+        if let convertedLocation = window?.convert(location, to: dialogView!) {
+            if !dialogView!.bounds.contains(convertedLocation) {
+                close()
+            }
+        }
+    }
 
     /// Dialog close animation then cleaning and removing the view from the parent
     private func close() {
+        if let tapRecognizer = tapRecognizer {
+            tapRecognizer.view!.removeGestureRecognizer(tapRecognizer)
+        }
+        
         let currentTransform = self.dialogView.layer.transform
 
         let startRotation = (self.value(forKeyPath: "layer.transform.rotation.z") as? NSNumber) as? Double ?? 0.0

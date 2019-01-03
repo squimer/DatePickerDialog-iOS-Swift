@@ -11,5 +11,6 @@ Pod::Spec.new do |s|
   s.source       = { :git => "https://github.com/squimer/DatePickerDialog-iOS-Swift.git", :tag => s.version }
   s.source_files  = "Sources/*.swift"
   s.requires_arc = true
+  s.swift_version = '4.2'
 end
 
