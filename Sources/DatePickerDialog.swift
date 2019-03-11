@@ -24,7 +24,7 @@ open class DatePickerDialog: UIView {
 
     // MARK: - Variables
     private var defaultDate: Date?
-    private var datePickerMode: UIDatePickerMode?
+    private var datePickerMode: UIDatePicker.Mode?
     private var callback: DatePickerCallback?
     var showCancelButton: Bool = false
     var locale: Locale?
@@ -73,7 +73,7 @@ open class DatePickerDialog: UIView {
     /// Handle device orientation changes
     @objc func deviceOrientationDidChange(_ notification: Notification) {
         self.frame = UIScreen.main.bounds
-        let dialogSize = CGSize(width: 300, height: 230 + kDefaultButtonHeight + kDefaultButtonSpacerHeight)
+        let dialogSize = CGSize(width: UIScreen.main.bounds.size.width - 10, height: 230 + kDefaultButtonHeight + kDefaultButtonSpacerHeight)
         dialogView.frame = CGRect(x: (UIScreen.main.bounds.size.width - dialogSize.width) / 2,
                                   y: (UIScreen.main.bounds.size.height - dialogSize.height) / 2,
                                   width: dialogSize.width,
@@ -86,7 +86,7 @@ open class DatePickerDialog: UIView {
                    cancelButtonTitle: String = "Cancel",
                    defaultDate: Date = Date(),
                    minimumDate: Date? = nil, maximumDate: Date? = nil,
-                   datePickerMode: UIDatePickerMode = .dateAndTime,
+                   datePickerMode: UIDatePicker.Mode = .dateAndTime,
                    callback: @escaping DatePickerCallback) {
         self.titleLabel.text = title
         self.doneButton.setTitle(doneButtonTitle, for: .normal)
@@ -96,7 +96,7 @@ open class DatePickerDialog: UIView {
         self.datePickerMode = datePickerMode
         self.callback = callback
         self.defaultDate = defaultDate
-        self.datePicker.datePickerMode = self.datePickerMode ?? UIDatePickerMode.date
+        self.datePicker.datePickerMode = self.datePickerMode ?? UIDatePicker.Mode.date
         self.datePicker.date = self.defaultDate ?? Date()
         self.datePicker.maximumDate = maximumDate
         self.datePicker.minimumDate = minimumDate
@@ -107,12 +107,12 @@ open class DatePickerDialog: UIView {
         guard let appDelegate = UIApplication.shared.delegate else { fatalError() }
         guard let window = appDelegate.window else { fatalError() }
         window?.addSubview(self)
-        window?.bringSubview(toFront: self)
+        window?.bringSubviewToFront(self)
         window?.endEditing(true)
 
         NotificationCenter.default.addObserver(self,
                                                selector: .deviceOrientationDidChange,
-                                               name: NSNotification.Name.UIDeviceOrientationDidChange, object: nil)
+                                               name: UIDevice.orientationDidChangeNotification, object: nil)
 
         /* Anim */
         UIView.animate(
@@ -159,7 +159,7 @@ open class DatePickerDialog: UIView {
     /// Creates the container view here: create the dialog, then add the custom content and buttons
     private func createContainerView() -> UIView {
         let screenSize = UIScreen.main.bounds.size
-        let dialogSize = CGSize(width: 300, height: 230 + kDefaultButtonHeight + kDefaultButtonSpacerHeight)
+        let dialogSize = CGSize(width: UIScreen.main.bounds.size.width - 10, height: 230 + kDefaultButtonHeight + kDefaultButtonSpacerHeight)
 
         // For the black background
         self.frame = CGRect(x: 0, y: 0, width: screenSize.width, height: screenSize.height)
@@ -220,7 +220,7 @@ open class DatePickerDialog: UIView {
         let datePicker = UIDatePicker(frame: CGRect(x: 0, y: 30, width: 0, height: 0))
         datePicker.setValue(self.textColor, forKeyPath: "textColor")
         datePicker.autoresizingMask = .flexibleRightMargin
-        datePicker.frame.size.width = 300
+        datePicker.frame.size.width = UIScreen.main.bounds.size.width - 10
         datePicker.frame.size.height = 216
         return datePicker
     }
