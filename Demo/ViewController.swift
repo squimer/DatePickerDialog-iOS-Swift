@@ -4,6 +4,13 @@ import DatePickerDialog
 class ViewController: UIViewController {
     @IBOutlet weak var textField: UITextField!
 
+    let datePicker = DatePickerDialog(
+        textColor: .red,
+        buttonColor: .red,
+        font: UIFont.boldSystemFont(ofSize: 17),
+        showCancelButton: true
+    )
+
     override func viewDidLoad() {
         super.viewDidLoad()
         textField.delegate = self
@@ -15,10 +22,6 @@ class ViewController: UIViewController {
         dateComponents.month = -3
         let threeMonthAgo = Calendar.current.date(byAdding: dateComponents, to: currentDate)
 
-        let datePicker = DatePickerDialog(textColor: .red,
-                                          buttonColor: .red,
-                                          font: UIFont.boldSystemFont(ofSize: 17),
-                                          showCancelButton: true)
         datePicker.show("DatePickerDialog",
                         doneButtonTitle: "Done",
                         cancelButtonTitle: "Cancel",
