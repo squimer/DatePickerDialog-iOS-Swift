@@ -34,7 +34,7 @@ open class DatePickerDialog: UIView {
     private var font: UIFont!
 
     // MARK: - Dialog initialization
-    public init(textColor: UIColor = UIColor.black,
+    @objc public init(textColor: UIColor = UIColor.black,
                 buttonColor: UIColor = UIColor.blue,
                 font: UIFont = .boldSystemFont(ofSize: 15),
                 locale: Locale? = nil,
@@ -49,7 +49,7 @@ open class DatePickerDialog: UIView {
         setupView()
     }
 
-    required public init?(coder aDecoder: NSCoder) {
+    @objc required public init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
     }
 
