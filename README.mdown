@@ -61,6 +61,7 @@ github "squimer/DatePickerDialog-iOS-Swift"
 
 ## Dialog parameters
 - showCancelButton: Bool - default true
+- cancelable: Bool - default true
 - locale: Locale? - default nil
 
 Example without 'Cancel' button:
