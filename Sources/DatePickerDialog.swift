@@ -4,6 +4,8 @@ import UIKit
 private extension Selector {
     static let buttonTapped = #selector(DatePickerDialog.buttonTapped)
     static let deviceOrientationDidChange = #selector(DatePickerDialog.deviceOrientationDidChange)
+    static let viewForCancelTapped = #selector(DatePickerDialog.viewForCancelTapped)
+
 }
 
 open class DatePickerDialog: UIView {
@@ -27,6 +29,7 @@ open class DatePickerDialog: UIView {
     private var datePickerMode: UIDatePicker.Mode?
     private var callback: DatePickerCallback?
     var showCancelButton: Bool = false
+    var cancelable: Bool = false
     var locale: Locale?
 
     private var textColor: UIColor!
@@ -38,13 +41,14 @@ open class DatePickerDialog: UIView {
                 buttonColor: UIColor = UIColor.blue,
                 font: UIFont = .boldSystemFont(ofSize: 15),
                 locale: Locale? = nil,
-                showCancelButton: Bool = true) {
+                showCancelButton: Bool = true, cancelable: Bool = false) {
         let size = UIScreen.main.bounds.size
         super.init(frame: CGRect(x: 0, y: 0, width: size.width, height: size.height))
         self.textColor = textColor
         self.buttonColor = buttonColor
         self.font = font
         self.showCancelButton = showCancelButton
+        self.cancelable = cancelable
         self.locale = locale
         setupView()
     }
@@ -227,6 +231,11 @@ open class DatePickerDialog: UIView {
 
         // Add the buttons
         addButtonsToView(container: container)
+        
+        if cancelable {
+            let tap = UITapGestureRecognizer(target: self, action: .viewForCancelTapped)
+            self.addGestureRecognizer(tap)
+        }
 
         return container
     }
@@ -298,6 +307,11 @@ open class DatePickerDialog: UIView {
             self.callback?(nil)
         }
 
+        close()
+    }
+    
+    // triggered when view is tapped
+    @objc func viewForCancelTapped() {
         close()
     }
 
