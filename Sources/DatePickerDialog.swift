@@ -41,7 +41,7 @@ open class DatePickerDialog: UIView {
                 buttonColor: UIColor = UIColor.blue,
                 font: UIFont = .boldSystemFont(ofSize: 15),
                 locale: Locale? = nil,
-                showCancelButton: Bool = true, cancelable: Bool = false) {
+                showCancelButton: Bool = true, cancelable: Bool = true) {
         let size = UIScreen.main.bounds.size
         super.init(frame: CGRect(x: 0, y: 0, width: size.width, height: size.height))
         self.textColor = textColor
