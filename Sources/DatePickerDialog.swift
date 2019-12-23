@@ -39,7 +39,7 @@ open class DatePickerDialog: UIView {
                 font: UIFont = .boldSystemFont(ofSize: 15),
                 locale: Locale? = nil,
                 showCancelButton: Bool = true) {
-        let size = UIScreen.main.bounds.size
+        let size = UIApplication.shared.windows.first?.bounds.size ?? UIScreen.main.bounds.size
         super.init(frame: CGRect(x: 0, y: 0, width: size.width, height: size.height))
         self.textColor = textColor
         self.buttonColor = buttonColor
@@ -74,11 +74,11 @@ open class DatePickerDialog: UIView {
 
     /// Handle device orientation changes
     @objc func deviceOrientationDidChange(_ notification: Notification) {
-        self.frame = UIScreen.main.bounds
+        self.frame = bounds
         let dialogSize = CGSize(width: 300, height: 230 + kDefaultButtonHeight + kDefaultButtonSpacerHeight)
         dialogView.frame = CGRect(
-            x: (UIScreen.main.bounds.size.width - dialogSize.width) / 2,
-            y: (UIScreen.main.bounds.size.height - dialogSize.height) / 2,
+            x: (bounds.size.width - dialogSize.width) / 2,
+            y: (bounds.size.height - dialogSize.height) / 2,
             width: dialogSize.width,
             height: dialogSize.height
         )
@@ -164,7 +164,7 @@ open class DatePickerDialog: UIView {
 
     /// Creates the container view here: create the dialog, then add the custom content and buttons
     private func createContainerView() -> UIView {
-        let screenSize = UIScreen.main.bounds.size
+        let screenSize = bounds.size
         let dialogSize = CGSize(width: 300, height: 230 + kDefaultButtonHeight + kDefaultButtonSpacerHeight)
 
         // For the black background
