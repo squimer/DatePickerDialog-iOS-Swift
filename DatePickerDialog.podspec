@@ -1,6 +1,6 @@
 Pod::Spec.new do |s|
   s.name         = "DatePickerDialog"
-  s.version      = "3.0"
+  s.version      = "3.0.1"
   s.summary      = "Date picker dialog for iOS"
   s.homepage     = "https://github.com/squimer/DatePickerDialog-iOS-Swift"
   s.license      = { :type => "MIT", :file => "LICENSE" }

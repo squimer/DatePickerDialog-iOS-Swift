@@ -1,4 +1,4 @@
-# DatePickerDialog 3.0- iOS - Swift
+# DatePickerDialog 3.0.1- iOS - Swift
 
 DatePickerDialog is an iOS drop-in classe that displays an UIDatePicker within an UIAlertView.
 
@@ -83,6 +83,7 @@ DatePickerDialog(locale: Locale(identifier: "es_PY")).show(title: "DatePicker", 
 - minimumDate: Date
 - maximumDate: Date
 - datePickerMode: UIDatePickerMode **(Required)**
+- minuteInterval: Int
 - callback: ((date: Date) -> Void) **(Required)**
 
 ## Special thanks to
