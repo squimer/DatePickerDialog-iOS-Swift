@@ -106,6 +106,8 @@ open class DatePickerDialog: UIView {
         self.datePicker.minimumDate = minimumDate
         if let locale = self.locale { self.datePicker.locale = locale }
 
+        if #available(iOS 13.4, *) { datePicker.preferredDatePickerStyle = .wheels }
+
         /* Add dialog to main window */
         guard let appDelegate = UIApplication.shared.delegate else { fatalError() }
         guard let window = appDelegate.window else { fatalError() }
