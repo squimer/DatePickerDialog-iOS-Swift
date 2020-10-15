@@ -4,12 +4,7 @@ import DatePickerDialog
 class ViewController: UIViewController {
     @IBOutlet weak var textField: UITextField!
 
-    let datePicker = DatePickerDialog(
-        textColor: .red,
-        buttonColor: .red,
-        font: UIFont.boldSystemFont(ofSize: 17),
-        showCancelButton: true
-    )
+    let datePicker = DatePickerDialog()
 
     override func viewDidLoad() {
         super.viewDidLoad()
