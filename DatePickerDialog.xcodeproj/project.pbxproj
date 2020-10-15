@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		244F549325388FAE00A849CC /* UIColor+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = 244F549225388FAE00A849CC /* UIColor+Ext.swift */; };
+		244F54952538940A00A849CC /* Colors.swift in Sources */ = {isa = PBXBuildFile; fileRef = 244F54942538940A00A849CC /* Colors.swift */; };
 		272D1E3523942CC100199BB5 /* DatePickerDialog.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4BDE05A31D8F3AF000DEF7F3 /* DatePickerDialog.framework */; };
 		272D1E3623942CC100199BB5 /* DatePickerDialog.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 4BDE05A31D8F3AF000DEF7F3 /* DatePickerDialog.framework */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 		4B025BE61D8F46E2000CF209 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B025BDE1D8F46E2000CF209 /* AppDelegate.swift */; };
@@ -46,6 +47,7 @@
 
 /* Begin PBXFileReference section */
 		244F549225388FAE00A849CC /* UIColor+Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIColor+Ext.swift"; sourceTree = "<group>"; };
+		244F54942538940A00A849CC /* Colors.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Colors.swift; sourceTree = "<group>"; };
 		4B025BDE1D8F46E2000CF209 /* AppDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		4B025BE21D8F46E2000CF209 /* ViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		4B025BE41D8F46E2000CF209 /* Launch Screen.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = "Launch Screen.storyboard"; sourceTree = "<group>"; };
@@ -138,6 +140,7 @@
 			children = (
 				4BDE05C01D8F3B7C00DEF7F3 /* DatePickerDialog.swift */,
 				244F549225388FAE00A849CC /* UIColor+Ext.swift */,
+				244F54942538940A00A849CC /* Colors.swift */,
 			);
 			path = Sources;
 			sourceTree = "<group>";
@@ -308,6 +311,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				4BDE05C51D8F3B7D00DEF7F3 /* DatePickerDialog.swift in Sources */,
+				244F54952538940A00A849CC /* Colors.swift in Sources */,
 				244F549325388FAE00A849CC /* UIColor+Ext.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
