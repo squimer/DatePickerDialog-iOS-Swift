@@ -33,7 +33,7 @@ open class DatePickerDialog: UIView {
     private var buttonColor: UIColor!
     private var font: UIFont!
 
-    private lazy var container = UIView()
+    private var container: UIView?
     private lazy var gradient = CAGradientLayer(layer: self.layer)
 
     // MARK: - Dialog initialization
@@ -179,6 +179,8 @@ open class DatePickerDialog: UIView {
         self.frame = CGRect(x: 0, y: 0, width: screenSize.width, height: screenSize.height)
 
         // This is the dialog's container; we attach the custom content and the buttons to this one
+        let container = UIView()
+        self.container = container
         container.frame = CGRect(
             x: (screenSize.width - dialogSize.width) / 2,
             y: (screenSize.height - dialogSize.height) / 2,
@@ -310,7 +312,7 @@ open class DatePickerDialog: UIView {
 
     open override func traitCollectionDidChange(_ previousTraitCollection: UITraitCollection?) {
         super.traitCollectionDidChange(previousTraitCollection)
-        container.layer.borderColor = Colors.separator.cgColor
+        container?.layer.borderColor = Colors.separator.cgColor
         gradient.colors = Colors.gradientBackground
     }
 }
