@@ -21,7 +21,6 @@ open class DatePickerDialog: UIView {
     open var datePicker: UIDatePicker!
     private var cancelButton: UIButton!
     private var doneButton: UIButton!
-    private var container: UIView!
 
     // MARK: - Variables
     private var defaultDate: Date?
@@ -33,45 +32,15 @@ open class DatePickerDialog: UIView {
     private var textColor: UIColor!
     private var buttonColor: UIColor!
     private var font: UIFont!
-    
-    open override func traitCollectionDidChange(_ previousTraitCollection: UITraitCollection?) {
-        super.traitCollectionDidChange(previousTraitCollection)
-        
-        configureAdaptiveColors()
-    }
-    
-    private func configureAdaptiveColors() {
-        backgroundColor = color(for: traitCollection, light: .white, dark: rgba(44, 53, 64, 1))
-        container.backgroundColor = color(for: traitCollection, light: .white, dark: rgba(44, 53, 64, 1))
-        dialogView.backgroundColor = color(for: traitCollection, light: .white, dark: rgba(44, 53, 64, 1))
-        datePicker.backgroundColor = .clear
-        doneButton.backgroundColor = color(for: traitCollection, light: .white, dark: rgba(44, 53, 64, 1))
-        cancelButton.backgroundColor = color(for: traitCollection, light: .white, dark: rgba(44, 53, 64, 1))
-        titleLabel.backgroundColor = color(for: traitCollection, light: .white, dark: rgba(44, 53, 64, 1))
-    }
-    
-    private func rgba(_ red: CGFloat, _ green: CGFloat, _ blue: CGFloat, _ alpha: CGFloat) -> UIColor {
-        return UIColor(red: red/255, green: green/255, blue: blue/255, alpha: alpha)
-    }
-    
-    private func color(for traitCollection: UITraitCollection, light: UIColor, dark: UIColor) -> UIColor {
-        if #available(iOS 12.0, *) {
-            switch traitCollection.userInterfaceStyle {
-                case .light, .unspecified: return light
-                case .dark: return dark
-                @unknown default: return light
-            }
-        } else {
-            return light
-        }
-    }
 
     // MARK: - Dialog initialization
-    @objc public init(textColor: UIColor = UIColor.black,
-                buttonColor: UIColor = UIColor.blue,
-                font: UIFont = .boldSystemFont(ofSize: 15),
-                locale: Locale? = nil,
-                showCancelButton: Bool = true) {
+    @objc public init(
+        textColor: UIColor = UIColor.black,
+        buttonColor: UIColor = UIColor.blue,
+        font: UIFont = .boldSystemFont(ofSize: 15),
+        locale: Locale? = nil,
+        showCancelButton: Bool = true
+    ) {
         let size = UIScreen.main.bounds.size
         super.init(frame: CGRect(x: 0, y: 0, width: size.width, height: size.height))
         self.textColor = textColor
@@ -82,6 +51,7 @@ open class DatePickerDialog: UIView {
         setupView()
     }
 
+    @available(*, unavailable)
     @objc required public init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
     }
@@ -103,8 +73,6 @@ open class DatePickerDialog: UIView {
         if let dialogView = dialogView {
             addSubview(dialogView)
         }
-        
-        configureAdaptiveColors()
     }
 
     /// Handle device orientation changes
@@ -208,7 +176,7 @@ open class DatePickerDialog: UIView {
         self.frame = CGRect(x: 0, y: 0, width: screenSize.width, height: screenSize.height)
 
         // This is the dialog's container; we attach the custom content and the buttons to this one
-        container = UIView(frame: CGRect(
+        let container = UIView(frame: CGRect(
             x: (screenSize.width - dialogSize.width) / 2,
             y: (screenSize.height - dialogSize.height) / 2,
             width: dialogSize.width,
@@ -218,18 +186,18 @@ open class DatePickerDialog: UIView {
         // First, we style the dialog to match the iOS8 UIAlertView >>>
         let gradient: CAGradientLayer = CAGradientLayer(layer: self.layer)
         gradient.frame = container.bounds
-//        gradient.colors = [
-//            UIColor(red: 218/255, green: 218/255, blue: 218/255, alpha: 1).cgColor,
-//            UIColor(red: 233/255, green: 233/255, blue: 233/255, alpha: 1).cgColor,
-//            UIColor(red: 218/255, green: 218/255, blue: 218/255, alpha: 1).cgColor
-//        ]
+        gradient.colors = [
+            UIColor(red: 218/255, green: 218/255, blue: 218/255, alpha: 1).cgColor,
+            UIColor(red: 233/255, green: 233/255, blue: 233/255, alpha: 1).cgColor,
+            UIColor(red: 218/255, green: 218/255, blue: 218/255, alpha: 1).cgColor
+        ]
 
         let cornerRadius = kCornerRadius
         gradient.cornerRadius = cornerRadius
         container.layer.insertSublayer(gradient, at: 0)
 
         container.layer.cornerRadius = cornerRadius
-        container.layer.borderColor = color(for: traitCollection, light: .white, dark: rgba(44, 53, 64, 1)).cgColor
+        container.layer.borderColor = UIColor(red: 198/255, green: 198/255, blue: 198/255, alpha: 1).cgColor
         container.layer.borderWidth = 1
         container.layer.shadowRadius = cornerRadius + 5
         container.layer.shadowOpacity = 0.1
@@ -249,7 +217,7 @@ open class DatePickerDialog: UIView {
             height: kDefaultButtonSpacerHeight
         ))
 
-        lineView.backgroundColor = color(for: traitCollection, light: rgba(0, 57, 86, 1), dark: rgba(134, 134, 145, 1))
+        lineView.backgroundColor = UIColor(red: 198/255, green: 198/255, blue: 198/255, alpha: 1)
         container.addSubview(lineView)
 
         //Title
