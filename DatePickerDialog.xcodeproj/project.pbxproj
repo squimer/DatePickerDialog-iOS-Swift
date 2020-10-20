@@ -7,12 +7,15 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		244F549325388FAE00A849CC /* UIColor+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = 244F549225388FAE00A849CC /* UIColor+Ext.swift */; };
+		244F54952538940A00A849CC /* Colors.swift in Sources */ = {isa = PBXBuildFile; fileRef = 244F54942538940A00A849CC /* Colors.swift */; };
+		272D1E3523942CC100199BB5 /* DatePickerDialog.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4BDE05A31D8F3AF000DEF7F3 /* DatePickerDialog.framework */; };
+		272D1E3623942CC100199BB5 /* DatePickerDialog.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 4BDE05A31D8F3AF000DEF7F3 /* DatePickerDialog.framework */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 		4B025BE61D8F46E2000CF209 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B025BDE1D8F46E2000CF209 /* AppDelegate.swift */; };
 		4B025BE91D8F46E2000CF209 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B025BE21D8F46E2000CF209 /* ViewController.swift */; };
 		4B025BEA1D8F46E2000CF209 /* Launch Screen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4B025BE41D8F46E2000CF209 /* Launch Screen.storyboard */; };
 		4B025BEB1D8F46E2000CF209 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4B025BE51D8F46E2000CF209 /* Main.storyboard */; };
 		4B025BEF1D8F4766000CF209 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4B025BED1D8F4766000CF209 /* Assets.xcassets */; };
-		4BBB68A11D8FDAC500413949 /* DatePickerDialog.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4BDE05A31D8F3AF000DEF7F3 /* DatePickerDialog.framework */; };
 		4BDE05AD1D8F3AF000DEF7F3 /* DatePickerDialog.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4BDE05A31D8F3AF000DEF7F3 /* DatePickerDialog.framework */; };
 		4BDE05C51D8F3B7D00DEF7F3 /* DatePickerDialog.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4BDE05C01D8F3B7C00DEF7F3 /* DatePickerDialog.swift */; };
 		4BDE05C91D8F3B8500DEF7F3 /* DatePickerDialogTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4BDE05C31D8F3B7D00DEF7F3 /* DatePickerDialogTests.swift */; };
@@ -28,7 +31,23 @@
 		};
 /* End PBXContainerItemProxy section */
 
+/* Begin PBXCopyFilesBuildPhase section */
+		272D1E3723942CC100199BB5 /* Embed Frameworks */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+				272D1E3623942CC100199BB5 /* DatePickerDialog.framework in Embed Frameworks */,
+			);
+			name = "Embed Frameworks";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
+
 /* Begin PBXFileReference section */
+		244F549225388FAE00A849CC /* UIColor+Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIColor+Ext.swift"; sourceTree = "<group>"; };
+		244F54942538940A00A849CC /* Colors.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Colors.swift; sourceTree = "<group>"; };
 		4B025BDE1D8F46E2000CF209 /* AppDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		4B025BE21D8F46E2000CF209 /* ViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		4B025BE41D8F46E2000CF209 /* Launch Screen.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = "Launch Screen.storyboard"; sourceTree = "<group>"; };
@@ -46,7 +65,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				4BBB68A11D8FDAC500413949 /* DatePickerDialog.framework in Frameworks */,
+				272D1E3523942CC100199BB5 /* DatePickerDialog.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -120,6 +139,8 @@
 			isa = PBXGroup;
 			children = (
 				4BDE05C01D8F3B7C00DEF7F3 /* DatePickerDialog.swift */,
+				244F549225388FAE00A849CC /* UIColor+Ext.swift */,
+				244F54942538940A00A849CC /* Colors.swift */,
 			);
 			path = Sources;
 			sourceTree = "<group>";
@@ -152,6 +173,7 @@
 				4B1E9F331D8F3C9A00C1EF25 /* Sources */,
 				4B1E9F341D8F3C9A00C1EF25 /* Frameworks */,
 				4B1E9F351D8F3C9A00C1EF25 /* Resources */,
+				272D1E3723942CC100199BB5 /* Embed Frameworks */,
 			);
 			buildRules = (
 			);
@@ -210,11 +232,13 @@
 				TargetAttributes = {
 					4B1E9F361D8F3C9A00C1EF25 = {
 						CreatedOnToolsVersion = 8.0;
+						DevelopmentTeam = FQCZQ8XV2G;
 						LastSwiftMigration = 0800;
 						ProvisioningStyle = Automatic;
 					};
 					4BDE05A21D8F3AF000DEF7F3 = {
 						CreatedOnToolsVersion = 8.0;
+						DevelopmentTeam = FQCZQ8XV2G;
 						LastSwiftMigration = 0900;
 						ProvisioningStyle = Automatic;
 					};
@@ -287,6 +311,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				4BDE05C51D8F3B7D00DEF7F3 /* DatePickerDialog.swift in Sources */,
+				244F54952538940A00A849CC /* Colors.swift in Sources */,
+				244F549325388FAE00A849CC /* UIColor+Ext.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -315,9 +341,11 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CLANG_ENABLE_MODULES = YES;
+				DEVELOPMENT_TEAM = FQCZQ8XV2G;
 				INFOPLIST_FILE = "$(SRCROOT)/Demo/Resources/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				MARKETING_VERSION = 4.0;
 				PRODUCT_BUNDLE_IDENTIFIER = squimer.DatePickerDialogExample;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
@@ -331,9 +359,11 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CLANG_ENABLE_MODULES = YES;
+				DEVELOPMENT_TEAM = FQCZQ8XV2G;
 				INFOPLIST_FILE = "$(SRCROOT)/Demo/Resources/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				MARKETING_VERSION = 4.0;
 				PRODUCT_BUNDLE_IDENTIFIER = squimer.DatePickerDialogExample;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
@@ -461,8 +491,9 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				CLANG_ENABLE_MODULES = YES;
-				CODE_SIGN_IDENTITY = "";
+				CODE_SIGN_IDENTITY = "Apple Development";
 				DEFINES_MODULE = YES;
+				DEVELOPMENT_TEAM = FQCZQ8XV2G;
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
@@ -470,6 +501,7 @@
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				MARKETING_VERSION = 4.0;
 				PRODUCT_BUNDLE_IDENTIFIER = squimer.DatePickerDialog;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
@@ -483,8 +515,9 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				CLANG_ENABLE_MODULES = YES;
-				CODE_SIGN_IDENTITY = "";
+				CODE_SIGN_IDENTITY = "Apple Development";
 				DEFINES_MODULE = YES;
+				DEVELOPMENT_TEAM = FQCZQ8XV2G;
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
@@ -492,6 +525,7 @@
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				MARKETING_VERSION = 4.0;
 				PRODUCT_BUNDLE_IDENTIFIER = squimer.DatePickerDialog;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;

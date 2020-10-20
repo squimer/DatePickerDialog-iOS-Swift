@@ -33,22 +33,29 @@ open class DatePickerDialog: UIView {
     private var buttonColor: UIColor!
     private var font: UIFont!
 
+    private var container: UIView?
+    private lazy var gradient = CAGradientLayer(layer: self.layer)
+
     // MARK: - Dialog initialization
-    @objc public init(textColor: UIColor = UIColor.black,
-                buttonColor: UIColor = UIColor.blue,
-                font: UIFont = .boldSystemFont(ofSize: 15),
-                locale: Locale? = nil,
-                showCancelButton: Bool = true) {
+    @objc public init(
+        textColor: UIColor? = nil,
+        buttonColor: UIColor? = nil,
+        font: UIFont = .boldSystemFont(ofSize: 15),
+        locale: Locale? = nil,
+        showCancelButton: Bool = true
+    ) {
         let size = UIApplication.shared.windows.first?.bounds.size ?? UIScreen.main.bounds.size
+
         super.init(frame: CGRect(x: 0, y: 0, width: size.width, height: size.height))
-        self.textColor = textColor
-        self.buttonColor = buttonColor
+        self.textColor = textColor ?? Colors.text
+        self.buttonColor = buttonColor ?? Colors.accent
         self.font = font
         self.showCancelButton = showCancelButton
         self.locale = locale
         setupView()
     }
 
+    @available(*, unavailable)
     @objc required public init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
     }
@@ -105,6 +112,8 @@ open class DatePickerDialog: UIView {
         self.datePicker.maximumDate = maximumDate
         self.datePicker.minimumDate = minimumDate
         if let locale = self.locale { self.datePicker.locale = locale }
+
+        if #available(iOS 13.4, *) { datePicker.preferredDatePickerStyle = .wheels }
 
         /* Add dialog to main window */
         guard let appDelegate = UIApplication.shared.delegate else { fatalError() }
@@ -171,28 +180,25 @@ open class DatePickerDialog: UIView {
         self.frame = CGRect(x: 0, y: 0, width: screenSize.width, height: screenSize.height)
 
         // This is the dialog's container; we attach the custom content and the buttons to this one
-        let container = UIView(frame: CGRect(
+        let container = UIView()
+        self.container = container
+        container.frame = CGRect(
             x: (screenSize.width - dialogSize.width) / 2,
             y: (screenSize.height - dialogSize.height) / 2,
             width: dialogSize.width,
             height: dialogSize.height
-        ))
+        )
 
         // First, we style the dialog to match the iOS8 UIAlertView >>>
-        let gradient: CAGradientLayer = CAGradientLayer(layer: self.layer)
         gradient.frame = container.bounds
-        gradient.colors = [
-            UIColor(red: 218/255, green: 218/255, blue: 218/255, alpha: 1).cgColor,
-            UIColor(red: 233/255, green: 233/255, blue: 233/255, alpha: 1).cgColor,
-            UIColor(red: 218/255, green: 218/255, blue: 218/255, alpha: 1).cgColor
-        ]
+        gradient.colors = Colors.gradientBackground
 
         let cornerRadius = kCornerRadius
         gradient.cornerRadius = cornerRadius
         container.layer.insertSublayer(gradient, at: 0)
 
         container.layer.cornerRadius = cornerRadius
-        container.layer.borderColor = UIColor(red: 198/255, green: 198/255, blue: 198/255, alpha: 1).cgColor
+        container.layer.borderColor = Colors.separator.cgColor
         container.layer.borderWidth = 1
         container.layer.shadowRadius = cornerRadius + 5
         container.layer.shadowOpacity = 0.1
@@ -212,7 +218,7 @@ open class DatePickerDialog: UIView {
             height: kDefaultButtonSpacerHeight
         ))
 
-        lineView.backgroundColor = UIColor(red: 198/255, green: 198/255, blue: 198/255, alpha: 1)
+        lineView.backgroundColor = Colors.separator
         container.addSubview(lineView)
 
         //Title
@@ -270,7 +276,7 @@ open class DatePickerDialog: UIView {
         let isLeftToRightDirection = interfaceLayoutDirection == .leftToRight
 
         if showCancelButton {
-            self.cancelButton = UIButton(type: .custom) as UIButton
+            self.cancelButton = UIButton(type: .system)
             self.cancelButton.frame = isLeftToRightDirection ? leftButtonFrame : rightButtonFrame
             self.cancelButton.setTitleColor(self.buttonColor, for: .normal)
             self.cancelButton.setTitleColor(self.buttonColor, for: .highlighted)
@@ -280,7 +286,7 @@ open class DatePickerDialog: UIView {
             container.addSubview(self.cancelButton)
         }
 
-        self.doneButton = UIButton(type: .custom) as UIButton
+        self.doneButton = UIButton(type: .system)
         self.doneButton.frame = isLeftToRightDirection ? rightButtonFrame : leftButtonFrame
         self.doneButton.tag = kDoneButtonTag
         self.doneButton.setTitleColor(self.buttonColor, for: .normal)
@@ -303,5 +309,11 @@ open class DatePickerDialog: UIView {
 
     deinit {
         NotificationCenter.default.removeObserver(self)
+    }
+
+    open override func traitCollectionDidChange(_ previousTraitCollection: UITraitCollection?) {
+        super.traitCollectionDidChange(previousTraitCollection)
+        container?.layer.borderColor = Colors.separator.cgColor
+        gradient.colors = Colors.gradientBackground
     }
 }

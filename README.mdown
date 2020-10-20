@@ -1,4 +1,4 @@
-# DatePickerDialog 3.0- iOS - Swift
+# DatePickerDialog 4.0 - iOS - Swift
 
 DatePickerDialog is an iOS drop-in classe that displays an UIDatePicker within an UIAlertView.
 
@@ -6,19 +6,21 @@ DatePickerDialog is an iOS drop-in classe that displays an UIDatePicker within a
 
 ## Requirements
 
-DatePickerDialog works on iOS 7, 8 and 9, 10, 11 and 12. It depends on the following Apple frameworks, which should already be included with most Xcode templates:
+DatePickerDialog works on iOS 7, 8 and 9, 10, 11, 12, 13 and 14. It depends on the following Apple frameworks, which should already be included with most Xcode templates:
 
 * Foundation
 * UIKit
 
 #### Swift Versions
-- Swift 5.0 (Current)
+- Swift 5.3 (Current)
+- Swift 4.2 (```3.0``` tag)
 - Swift 4.2 (```2.1``` tag)
 - Swift 4.2 (```2.0``` tag)
 - Swift 2.3 (```swift_2.3``` branch)
 
 ## Installation
 #### CocoaPods
+
 You can use [CocoaPods](http://cocoapods.org/) to install `DatePickerDialog` by adding it to your `Podfile`:
 
 ```ruby
@@ -47,19 +49,19 @@ github "squimer/DatePickerDialog-iOS-Swift"
 ## Example
 
 ```swift
-	func datePickerTapped() {
-		DatePickerDialog().show(title: "DatePicker", doneButtonTitle: "Done", cancelButtonTitle: "Cancel", datePickerMode: .date) {
-			(date) -> Void in
-			if let dt = date {
-                		let formatter = DateFormatter()
-                		formatter.dateFormat = "MM/dd/yyyy"
-                		self.textField.text = formatter.string(from: dt)
-            		}
+func datePickerTapped() {
+	DatePickerDialog().show(title: "DatePicker", doneButtonTitle: "Done", cancelButtonTitle: "Cancel", datePickerMode: .date) { date in
+		if let dt = date {
+			let formatter = DateFormatter()
+			formatter.dateFormat = "MM/dd/yyyy"
+			self.textField.text = formatter.string(from: dt)
 		}
 	}
+}
 ```
 
 ## Dialog parameters
+
 - showCancelButton: Bool - default true
 - locale: Locale? - default nil
 
@@ -72,7 +74,6 @@ Example with custom locale:
 ``` swift
 DatePickerDialog(locale: Locale(identifier: "es_PY")).show(title: "DatePicker", doneButtonTitle: "Done", datePickerMode: .date)
 ```
-
 
 ## Show parameters
 
