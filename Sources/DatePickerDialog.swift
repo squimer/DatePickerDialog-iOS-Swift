@@ -141,7 +141,7 @@ open class DatePickerDialog: UIView {
     }
 
     /// Dialog close animation then cleaning and removing the view from the parent
-    private func close() {
+    open func close() {
         let currentTransform = self.dialogView.layer.transform
 
         let startRotation = (self.value(forKeyPath: "layer.transform.rotation.z") as? NSNumber) as? Double ?? 0.0
