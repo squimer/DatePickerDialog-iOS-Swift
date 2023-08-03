@@ -116,7 +116,14 @@ open class DatePickerDialog: UIView {
 
         /* Add dialog to main window */
         guard let appDelegate = UIApplication.shared.delegate else { fatalError() }
-        guard let window = appDelegate.window else { fatalError() }
+        var window = appDelegate.window
+        if #available(iOS 13.4, *),
+            window == nil {
+            // do this to compatible with Swiftui
+            // and you should only use this approach if you app will only ever have one scene and one window.
+            window = (UIApplication.shared.connectedScenes.first as? UIWindowScene)?.windows.first
+        }
+        guard let window = window else { fatalError() }
         window?.addSubview(self)
         window?.bringSubviewToFront(self)
         window?.endEditing(true)
