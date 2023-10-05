@@ -14,6 +14,8 @@ open class DatePickerDialog: UIView {
     private let kDefaultButtonSpacerHeight: CGFloat = 1
     private let kCornerRadius: CGFloat = 7
     private let kDoneButtonTag: Int = 1
+    private let kDialogWidth = 300.0
+    private let kDialogHeight = 230.0
 
     // MARK: - Views
     private var dialogView: UIView!
@@ -81,7 +83,7 @@ open class DatePickerDialog: UIView {
     /// Handle device orientation changes
     @objc func deviceOrientationDidChange(_ notification: Notification) {
         self.frame = UIScreen.main.bounds
-        let dialogSize = CGSize(width: 300, height: 230 + kDefaultButtonHeight + kDefaultButtonSpacerHeight)
+        let dialogSize = CGSize(width: kDialogWidth, height: kDialogHeight + kDefaultButtonHeight + kDefaultButtonSpacerHeight)
         dialogView.frame = CGRect(
             x: (UIScreen.main.bounds.size.width - dialogSize.width) / 2,
             y: (UIScreen.main.bounds.size.height - dialogSize.height) / 2,
@@ -180,7 +182,7 @@ open class DatePickerDialog: UIView {
     /// Creates the container view here: create the dialog, then add the custom content and buttons
     private func createContainerView() -> UIView {
         let screenSize = UIScreen.main.bounds.size
-        let dialogSize = CGSize(width: 300, height: 230 + kDefaultButtonHeight + kDefaultButtonSpacerHeight)
+        let dialogSize = CGSize(width: kDialogWidth, height: kDialogHeight + kDefaultButtonHeight + kDefaultButtonSpacerHeight)
 
         // For the black background
         self.frame = CGRect(x: 0, y: 0, width: screenSize.width, height: screenSize.height)
@@ -247,7 +249,7 @@ open class DatePickerDialog: UIView {
         let datePicker = UIDatePicker(frame: CGRect(x: 0, y: 30, width: 0, height: 0))
         datePicker.setValue(self.textColor, forKeyPath: "textColor")
         datePicker.autoresizingMask = .flexibleRightMargin
-        datePicker.frame.size.width = 300
+        datePicker.frame.size.width = kDialogWidth
         datePicker.frame.size.height = 216
         return datePicker
     }
